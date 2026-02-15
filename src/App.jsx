@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react'
+import './index.css'
 
 const content = {
   sr: {
@@ -12,40 +12,47 @@ const content = {
       contact: 'Kontakt',
     },
     hero: {
-      title: 'Stranice koje prodaju, proizvodi koji rastu.',
+      title: 'Digitalni proizvodi koja <strong>funkcionišu</strong>.',
       subtitle:
-        'Dizajniram i razvijam landing stranice, multi-page sajtove, eCommerce i full-stack proizvode. Fokus: brzina, jasno porucivanje i merljiv rast.',
-      ctaPrimary: 'Zakazi poziv',
-      ctaSecondary: 'Pogledaj radove',
-      badge: 'Dostupan za nove projekte',
+        'Full-stack razvoj web aplikacija, e-commerce sistema i SaaS platformi. Bržina. Kvalitet. Rezultati.',
+      ctaPrimary: 'Konsultacija',
+      ctaSecondary: 'Portfolio',
+      highlights: ['Odgovor u roku 24h', 'MVP za 2-4 nedelje', 'Jasan roadmap i budžet'],
+    },
+    proof: {
+      items: [
+        { value: '30+', label: 'isporučenih feature-a godišnje' },
+        { value: '3x', label: 'brže performanse nakon optimizacije' },
+        { value: '99.9%', label: 'stabilnost produkcije' },
+      ],
     },
     services: {
-      title: 'Usluge',
+      title: 'Što nude',
       items: [
         {
-          title: 'Landing stranice',
-          desc: 'Visok konverzioni fokus, brze iteracije, A/B logika i jasni CTA tokovi.',
+          title: 'Web Aplikacije',
+          desc: 'React, Next.js, Node.js. Razvijem aplikacije koje rastu sa vašim biznisom.',
+          icon: '⚡',
+        },
+        {
+          title: 'E-commerce',
+          desc: 'Kompletan setup: Stripe, Shopify, custom rešenja. Od dizajna do prodaje.',
+          icon: '💳',
+        },
+        {
+          title: 'SaaS Platforme',
+          desc: 'Subscription modeli, user management, analytics. Sve što trebate.',
+          icon: '🔐',
+        },
+        {
+          title: 'Migracija & Refactor',
+          desc: 'Prenosim sisteme, optimizujem kod, poboljšavam performanse.',
+          icon: '🔄',
+        },
+        {
+          title: 'Tehnički Konsalting',
+          desc: 'Procenjujem projekat, dajem roadmap, preporučujem arhitekturu.',
           icon: '🎯',
-        },
-        {
-          title: 'Multi-page sajtovi',
-          desc: 'Struktura koja vodi korisnika, skalabilna sekcija po sekcija.',
-          icon: '🌐',
-        },
-        {
-          title: 'Ecommerce',
-          desc: 'Shop i checkout bez frikcije, optimizovano za mobile prodaju.',
-          icon: '🛒',
-        },
-        {
-          title: 'Full-stack projekti',
-          desc: 'Od ideje do produkcije: auth, dashboard, payment, integracije.',
-          icon: '⚙️',
-        },
-        {
-          title: 'AI agenti',
-          desc: 'Automatizacija procesa, personalizovani tokovi i asistenti po meri.',
-          icon: '🤖',
         },
       ],
     },
@@ -76,63 +83,70 @@ const content = {
       ],
     },
     process: {
-      title: 'Proces',
+      title: 'Kako radim',
       steps: [
         {
-          title: 'Discovery',
-          desc: 'Ciljevi, publika, ponuda i kljucne metrike.',
-          icon: '🔍',
+          title: '1. Analiza',
+          desc: 'Razumem vaš biznis, konkurenciju, ciljnu publiku i merljive ciljeve.',
+          icon: '📊',
         },
         {
-          title: 'UX & Wireframe',
-          desc: 'Mapa sekcija, hijerarhija poruka, CTA tok.',
-          icon: '✏️',
-        },
-        {
-          title: 'Design & Build',
-          desc: 'Vizuelni sistem + razvoj u React/Vite.',
+          title: '2. Dizajn',
+          desc: 'Pravim detaljne wireframe-a, UI/UX dizajn i tehnički spektifikum.',
           icon: '🎨',
         },
         {
-          title: 'Launch & Optimize',
-          desc: 'Finalno podesavanje, analitika, iteracije.',
+          title: '3. Razvoj',
+          desc: 'Bezbedna, skalabilna, brza arhitektura sa best practices kodom.',
+          icon: '⚙️',
+        },
+        {
+          title: '4. Lansiranje',
+          desc: 'Testing, deployment, monitoring. Sistem je siguran i gotov za produkciju.',
           icon: '🚀',
         },
       ],
     },
     testimonials: {
-      title: 'Utisci',
+      title: 'Rezultati',
       items: [
         {
           quote:
-            'Jasan proces i brzina isporuke. Konverzija je porasla u prvoj nedelji.',
-          name: 'CEO, SaaS startup',
+            'Prenosio je kompletan sistem iz starih tehnologija. Sada je 3x brži i lakši za održavanje.',
+          name: 'CTO, Tech Startup',
         },
         {
           quote:
-            'Odlicno razumevanje ponude i korisnika. Site izgleda premium.',
-          name: 'Founder, eCommerce brand',
+            'Sistem radi bez problema, konverzija je porasla jer je sajt brži. Preporuka.',
+          name: 'Founder, E-commerce',
         },
       ],
     },
     about: {
-      title: 'O meni',
+      title: 'Ja',
       body:
-        'Gradim digitalne proizvode koji spajaju estetiku i rezultat. Kombinujem dizajn razmisljanja, development i growth pristup da bi stranice radile posao.',
-      stackLabel: 'Fokus',
-      stack: ['React', 'Node', 'Stripe', 'Supabase', 'AI workflow'],
+        'Radim na web aplikacijama od 2018. Specijalizujem se u React, Node.js i skalabilnim arhitekturama. Fokus: performanse, bezbednost, user experience.',
+      stackLabel: 'Tech Stack',
+      stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
     },
     contact: {
-      title: 'Kontakt',
+      title: 'Hajde da radimo',
       body:
-        'Reci mi o projektu, budzetu i roku. Odgovaram u roku od 24h.',
+        'Želite li da saznate kako mogu da vam pomognem? Pošalite kratko opisanje projekta i budzeta.',
       emailLabel: 'Email',
       email: 'nikolaskakavac22@gmail.com',
-      note: 'Ili pisanje direktno na mejl.',
-      cta: 'Posalji upit',
+      note: 'Odgovaram u roku od 24h.',
+      cta: 'Pošalji poruku',
+      ctaSecondary: 'Zakaži brzi poziv',
+    },
+    ctaBanner: {
+      title: 'Spreman projekat za ozbiljan rast?',
+      body: 'Rezerviši besplatnu 15-min konsultaciju i dobijaš konkretan plan narednih koraka.',
+      primary: 'Rezerviši termin',
+      secondary: 'Pogledaj radove',
     },
     footer: {
-      line: 'Dostupan za projekte od Q2 2026.',
+      line: 'Dostupan za nove projekte.',
       social: 'Instagram: @skaledigitals',
     },
   },
@@ -146,40 +160,47 @@ const content = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Pages that sell, products that grow.',
+      title: 'Digital products that <strong>work</strong>.',
       subtitle:
-        'I design and build landing pages, multi-page sites, ecommerce and full-stack products. Focused on speed, clarity, and measurable growth.',
-      ctaPrimary: 'Book a call',
-      ctaSecondary: 'See work',
-      badge: 'Available for new projects',
+        'Full-stack development of web applications, e-commerce systems and SaaS platforms. Speed. Quality. Results.',
+      ctaPrimary: 'Consultation',
+      ctaSecondary: 'Portfolio',
+      highlights: ['Reply within 24h', 'MVP in 2-4 weeks', 'Clear roadmap and budget'],
+    },
+    proof: {
+      items: [
+        { value: '30+', label: 'features delivered per year' },
+        { value: '3x', label: 'faster performance after optimization' },
+        { value: '99.9%', label: 'production reliability' },
+      ],
     },
     services: {
-      title: 'Services',
+      title: 'What I offer',
       items: [
         {
-          title: 'Landing pages',
-          desc: 'Conversion-focused, fast iterations, clean CTA flows.',
+          title: 'Web Applications',
+          desc: 'React, Next.js, Node.js. Building applications that scale with your business.',
+          icon: '⚡',
+        },
+        {
+          title: 'E-commerce',
+          desc: 'Complete setup: Stripe, Shopify, custom solutions. From design to sales.',
+          icon: '💳',
+        },
+        {
+          title: 'SaaS Platforms',
+          desc: 'Subscription models, user management, analytics. Everything you need.',
+          icon: '🔐',
+        },
+        {
+          title: 'Migration & Refactor',
+          desc: 'Moving systems, optimizing code, improving performance.',
+          icon: '🔄',
+        },
+        {
+          title: 'Technical Consulting',
+          desc: 'Project assessment, roadmap, architecture recommendations.',
           icon: '🎯',
-        },
-        {
-          title: 'Multi-page websites',
-          desc: 'Structured storytelling, scalable sections and layouts.',
-          icon: '🌐',
-        },
-        {
-          title: 'Ecommerce',
-          desc: 'Frictionless shop and checkout, optimized for mobile sales.',
-          icon: '🛒',
-        },
-        {
-          title: 'Full-stack projects',
-          desc: 'From idea to production: auth, dashboards, payments, integrations.',
-          icon: '⚙️',
-        },
-        {
-          title: 'AI agents',
-          desc: 'Workflow automation, personalized flows, custom assistants.',
-          icon: '🤖',
         },
       ],
     },
@@ -210,62 +231,70 @@ const content = {
       ],
     },
     process: {
-      title: 'Process',
+      title: 'How I work',
       steps: [
         {
-          title: 'Discovery',
-          desc: 'Goals, audience, offer, and key metrics.',
-          icon: '🔍',
+          title: '1. Analysis',
+          desc: 'I understand your business, competition, target audience and goals.',
+          icon: '📊',
         },
         {
-          title: 'UX & Wireframe',
-          desc: 'Section map, message hierarchy, CTA path.',
-          icon: '✏️',
-        },
-        {
-          title: 'Design & Build',
-          desc: 'Visual system + development in React/Vite.',
+          title: '2. Design',
+          desc: 'Detailed wireframes, UI/UX design and technical specifications.',
           icon: '🎨',
         },
         {
-          title: 'Launch & Optimize',
-          desc: 'Final tuning, analytics, and iterations.',
+          title: '3. Development',
+          desc: 'Secure, scalable, fast architecture with clean, maintainable code.',
+          icon: '⚙️',
+        },
+        {
+          title: '4. Launch',
+          desc: 'Testing, deployment, monitoring. System is secure and production-ready.',
           icon: '🚀',
         },
       ],
     },
     testimonials: {
-      title: 'Testimonials',
+      title: 'Results',
       items: [
         {
           quote:
-            'Clear process and fast delivery. Conversions jumped in week one.',
-          name: 'CEO, SaaS startup',
+            'He migrated our entire system from legacy tech. Now 3x faster and much easier to maintain.',
+          name: 'CTO, Tech Startup',
         },
         {
           quote:
-            'Great understanding of the offer and audience. The site feels premium.',
-          name: 'Founder, ecommerce brand',
+            'System runs flawlessly, conversion improved because the site is faster. Highly recommend.',
+          name: 'Founder, E-commerce',
         },
       ],
     },
     about: {
-      title: 'About',
+      title: 'About me',
       body:
-        'I build digital products that blend aesthetics with performance. I combine design thinking, development, and growth to make pages work.',
-      stackLabel: 'Focus',
-      stack: ['React', 'Node', 'Stripe', 'Supabase', 'AI workflow'],
+        'Building web applications since 2018. Specialized in React, Node.js and scalable architectures. Focus: performance, security, user experience.',
+      stackLabel: 'Tech Stack',
+      stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
     },
     contact: {
-      title: 'Contact',
-      body: 'Tell me about your project, budget, and timeline. Reply within 24h.',
+      title: 'Let\'s build',
+      body:
+        'Want to explore how I can help? Send a brief project description and budget overview.',
       emailLabel: 'Email',
       email: 'nikolaskakavac22@gmail.com',
-      note: 'Or reach out directly via email.',
-      cta: 'Send inquiry',
+      note: 'I reply within 24 hours.',
+      cta: 'Send message',
+      ctaSecondary: 'Book a quick call',
+    },
+    ctaBanner: {
+      title: 'Ready to scale your product seriously?',
+      body: 'Book a free 15-min consultation and get a concrete action plan for your next sprint.',
+      primary: 'Book now',
+      secondary: 'See projects',
     },
     footer: {
-      line: 'Available for projects from Q2 2026.',
+      line: 'Available for new projects.',
       social: 'Instagram: @skaledigitals',
     },
   },
@@ -276,6 +305,17 @@ function App() {
   const [theme, setTheme] = useState('dark')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const t = content[lang]
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const renderIcon = (emoji) => {
     return <span style={{ fontSize: '1.5em' }}>{emoji}</span>
@@ -296,14 +336,13 @@ function App() {
           <a href="#contact">{t.nav.contact}</a>
         </nav>
         <button
-          className="hamburger"
+          className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
-          style={{ transform: mobileMenuOpen ? 'scale(1.1)' : 'scale(1)' }}
         >
-          <span style={{ transform: mobileMenuOpen ? 'rotate(45deg) translateY(12px)' : 'rotate(0)' }}></span>
-          <span style={{ opacity: mobileMenuOpen ? '0' : '1' }}></span>
-          <span style={{ transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-12px)' : 'rotate(0)' }}></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         {mobileMenuOpen && (
           <div className="mobile-menu">
@@ -369,29 +408,30 @@ function App() {
 
       <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
         <section className="hero" id="top">
-          <div className="hero-waves">
-            <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-              <path d="M0,64L80,74.7C160,85,320,107,480,106.7C640,107,800,85,960,80C1080,75,1200,75,1200,80L1200,120L0,120Z" fill="currentColor" opacity="0.1"></path>
-              <path d="M0,64L80,69.3C160,75,320,85,480,85.3C640,85,800,75,960,74.7C1080,75,1200,85,1200,90.7L1200,120L0,120Z" fill="currentColor" opacity="0.2"></path>
-              <path d="M0,70L80,75C160,80,320,90,480,90C640,90,800,80,960,75C1080,70,1200,70,1200,75L1200,120L0,120Z" fill="currentColor" opacity="0.3"></path>
-            </svg>
+          <h1 dangerouslySetInnerHTML={{ __html: t.hero.title }}></h1>
+          <p>{t.hero.subtitle}</p>
+          <div className="hero-highlights">
+            {t.hero.highlights.map((highlight) => (
+              <span key={highlight} className="highlight-chip">✓ {highlight}</span>
+            ))}
           </div>
-          <div className="hero-content-center">
-            <h1 className="hero-title">SKALEDIGITALS</h1>
-            <div className="hero-buttons">
-              <a className="btn primary large" href="#contact">
-                {t.hero.ctaPrimary}
-              </a>
-              <a className="btn ghost large" href="#work">
-                {t.hero.ctaSecondary}
-              </a>
-            </div>
-            <div className="hero-stars">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="star">★</span>
-              ))}
-            </div>
+          <div className="hero-buttons">
+            <a className="btn primary" href="#contact">
+              {t.hero.ctaPrimary}
+            </a>
+            <a className="btn ghost" href="#work">
+              {t.hero.ctaSecondary}
+            </a>
           </div>
+        </section>
+
+        <section className="proof-strip" aria-label={lang === 'sr' ? 'Ključni rezultati' : 'Key results'}>
+          {t.proof.items.map((item) => (
+            <article key={item.label} className="proof-card reveal">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
         </section>
 
         <section className="section" id="services">
@@ -495,6 +535,17 @@ function App() {
           </div>
         </section>
 
+        <section className="section cta-banner" aria-label={lang === 'sr' ? 'Poziv na akciju' : 'Call to action'}>
+          <div className="cta-banner-content">
+            <h2>{t.ctaBanner.title}</h2>
+            <p>{t.ctaBanner.body}</p>
+            <div className="cta-banner-actions">
+              <a className="btn primary" href="#contact">{t.ctaBanner.primary}</a>
+              <a className="btn ghost" href="#work">{t.ctaBanner.secondary}</a>
+            </div>
+          </div>
+        </section>
+
         <section className="section contact" id="contact">
           <div>
             <h2>{t.contact.title}</h2>
@@ -510,9 +561,16 @@ function App() {
             <a className="btn primary" href="mailto:nikolaskakavac22@gmail.com">
               {t.contact.cta}
             </a>
+            <a className="btn ghost" href="mailto:nikolaskakavac22@gmail.com?subject=Project%20Consultation&body=Hi%20Skale%20Digitals%2C%0A%0AI%20want%20to%20discuss%20a%20project.%0A%0ABudget%3A%0ATimeline%3A%0AGoals%3A">
+              {t.contact.ctaSecondary}
+            </a>
           </div>
         </section>
       </main>
+
+      <a className="sticky-cta" href="#contact">
+        {lang === 'sr' ? 'Zakazi konsultaciju' : 'Book consultation'}
+      </a>
 
       <footer className="footer">
         <div className="footer-content">
