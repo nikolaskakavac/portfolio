@@ -81,18 +81,24 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: 
-    radial-gradient(circle at 20% 0%, rgba(83, 100, 229, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 80% 100%, rgba(83, 100, 229, 0.05) 0%, transparent 40%),
+    linear-gradient(135deg, rgba(83, 100, 229, 0.15) 0%, rgba(124, 92, 255, 0.08) 25%, rgba(83, 100, 229, 0.05) 50%, rgba(124, 92, 255, 0.1) 75%, rgba(83, 100, 229, 0.15) 100%),
+    radial-gradient(circle at 20% 30%, rgba(83, 100, 229, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(124, 92, 255, 0.1) 0%, transparent 50%),
     var(--bg-primary);
   position: relative;
   transition: background-color 0.3s ease;
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
 }
 
 [data-theme="light"] .page {
   background: 
-    radial-gradient(circle at 20% 0%, rgba(83, 100, 229, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 100%, rgba(83, 100, 229, 0.03) 0%, transparent 40%),
+    linear-gradient(135deg, rgba(83, 100, 229, 0.1) 0%, rgba(124, 92, 255, 0.06) 25%, rgba(83, 100, 229, 0.04) 50%, rgba(124, 92, 255, 0.07) 75%, rgba(83, 100, 229, 0.1) 100%),
+    radial-gradient(circle at 20% 30%, rgba(83, 100, 229, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(124, 92, 255, 0.06) 0%, transparent 50%),
     var(--bg-primary);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
 }
 
 .page::before {
@@ -200,17 +206,30 @@ body {
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
+  background: var(--accent-alpha-08);
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  backdrop-filter: blur(15px);
+  border: 2px solid var(--accent-alpha-20);
+  transition: all 0.3s ease;
+}
+
+.nav:hover {
+  background: var(--accent-alpha-12);
+  border-color: var(--accent-alpha-30);
+  box-shadow: 0 8px 32px var(--accent-alpha-15);
 }
 
 .nav a {
   text-decoration: none;
   color: var(--secondary);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 550;
   transition: all 0.3s ease;
   position: relative;
+  padding: 0.5rem 0;
 }
 
 .nav a::after {
@@ -268,8 +287,9 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   padding: 2rem;
+  margin-top: -1rem;
 }
 
 .hero {
@@ -1032,6 +1052,18 @@ body {
   }
   100% {
     transform: translateX(100%);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
