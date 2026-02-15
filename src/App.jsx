@@ -3,7 +3,7 @@ import './index.css'
 
 const content = {
   sr: {
-    brand: 'Skale Digitals',
+    brand: 'SKALEDIGITALS',
     nav: {
       services: 'Usluge',
       work: 'Radovi',
@@ -17,14 +17,6 @@ const content = {
         'Full-stack razvoj web aplikacija, e-commerce sistema i SaaS platformi. Bržina. Kvalitet. Rezultati.',
       ctaPrimary: 'Konsultacija',
       ctaSecondary: 'Portfolio',
-      highlights: ['Odgovor u roku 24h', 'MVP za 2-4 nedelje', 'Jasan roadmap i budžet'],
-    },
-    proof: {
-      items: [
-        { value: '30+', label: 'isporučenih feature-a godišnje' },
-        { value: '3x', label: 'brže performanse nakon optimizacije' },
-        { value: '99.9%', label: 'stabilnost produkcije' },
-      ],
     },
     services: {
       title: 'Što nude',
@@ -151,7 +143,7 @@ const content = {
     },
   },
   en: {
-    brand: 'Skale Digitals',
+    brand: 'SKALEDIGITALS',
     nav: {
       services: 'Services',
       work: 'Work',
@@ -165,14 +157,6 @@ const content = {
         'Full-stack development of web applications, e-commerce systems and SaaS platforms. Speed. Quality. Results.',
       ctaPrimary: 'Consultation',
       ctaSecondary: 'Portfolio',
-      highlights: ['Reply within 24h', 'MVP in 2-4 weeks', 'Clear roadmap and budget'],
-    },
-    proof: {
-      items: [
-        { value: '30+', label: 'features delivered per year' },
-        { value: '3x', label: 'faster performance after optimization' },
-        { value: '99.9%', label: 'production reliability' },
-      ],
     },
     services: {
       title: 'What I offer',
@@ -357,14 +341,14 @@ function App() {
               className="mobile-theme-toggle"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             >
-              {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+              {theme === 'dark' ? 'Light theme' : 'Dark theme'}
             </button>
             <button
               type="button"
               className="mobile-lang-toggle"
               onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
             >
-              {lang === 'sr' ? '🇬🇧 English' : '🇷🇸 Srpski'}
+              {lang === 'sr' ? 'English' : 'Srpski'}
             </button>
           </div>
         )}
@@ -410,11 +394,6 @@ function App() {
         <section className="hero" id="top">
           <h1 dangerouslySetInnerHTML={{ __html: t.hero.title }}></h1>
           <p>{t.hero.subtitle}</p>
-          <div className="hero-highlights">
-            {t.hero.highlights.map((highlight) => (
-              <span key={highlight} className="highlight-chip">✓ {highlight}</span>
-            ))}
-          </div>
           <div className="hero-buttons">
             <a className="btn primary" href="#contact">
               {t.hero.ctaPrimary}
@@ -423,15 +402,6 @@ function App() {
               {t.hero.ctaSecondary}
             </a>
           </div>
-        </section>
-
-        <section className="proof-strip" aria-label={lang === 'sr' ? 'Ključni rezultati' : 'Key results'}>
-          {t.proof.items.map((item) => (
-            <article key={item.label} className="proof-card reveal">
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </article>
-          ))}
         </section>
 
         <section className="section" id="services">
@@ -567,10 +537,6 @@ function App() {
           </div>
         </section>
       </main>
-
-      <a className="sticky-cta" href="#contact">
-        {lang === 'sr' ? 'Zakazi konsultaciju' : 'Book consultation'}
-      </a>
 
       <footer className="footer">
         <div className="footer-content">
