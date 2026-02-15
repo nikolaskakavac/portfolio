@@ -273,17 +273,40 @@ body {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  padding: 2rem 0;
-}
-
-.hero-content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-waves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: 1;
+  opacity: 0.6;
+  color: var(--accent);
+}
+
+.hero-waves svg {
+  width: 100%;
+  height: 100%;
+  animation: wave 8s linear infinite;
+}
+
+.hero-content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  z-index: 2;
+  position: relative;
 }
 
 .pill {
@@ -300,16 +323,17 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
-.hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+.hero h1, .hero-title {
+  font-size: clamp(3rem, 10vw, 8rem);
   line-height: 1.1;
-  font-weight: 700;
-  letter-spacing: -1px;
+  font-weight: 900;
+  letter-spacing: -2px;
   background: linear-gradient(135deg, #fff, #7c5cff, #5364E5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientShift 6s ease infinite;
+  text-align: center;
 }
 
 .hero .lead {
@@ -320,11 +344,43 @@ body {
   animation: slideInLeft 0.8s ease-out;
 }
 
-.cta-row {
+.hero-buttons {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  animation: slideInLeft 0.8s ease-out 0.2s both;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hero-stars {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  margin-top: 1rem;
+}
+
+.star {
+  font-size: 1.8rem;
+  color: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.star:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.star:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.star:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.star:nth-child(5) {
+  animation-delay: 0.4s;
 }
 
 .btn {
@@ -340,6 +396,12 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.btn.large {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
 }
 
 .btn::before {
@@ -386,9 +448,7 @@ body {
 }
 
 .hero-panel {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1.5rem;
+  display: none;
 }
 
 .stat {
@@ -966,6 +1026,15 @@ body {
   }
 }
 
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .reveal {
   animation: fadeInUp 0.6s ease-out forwards;
   animation-delay: var(--delay, 0s);
@@ -974,20 +1043,34 @@ body {
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  background: transparent;
-  border: none;
+  gap: 6px;
+  background: var(--accent-alpha-10);
+  border: 2px solid var(--accent-alpha-30);
   cursor: pointer;
-  padding: 8px;
+  padding: 12px 16px;
   z-index: 101;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger:hover {
+  background: var(--accent-alpha-20);
+  border-color: var(--accent-alpha-50);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent-alpha-30);
 }
 
 .hamburger span {
   width: 24px;
-  height: 2px;
+  height: 3px;
   background: var(--primary);
   border-radius: 2px;
   transition: all 0.3s ease;
+  display: block;
 }
 
 .mobile-menu {
@@ -1095,6 +1178,26 @@ body {
   .main {
     padding: 1rem;
     gap: 3rem;
+  }
+
+  .hero {
+    min-height: 80vh;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn.large {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
   }
 
   .hero-panel {

@@ -299,10 +299,11 @@ function App() {
           className="hamburger"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
+          style={{ transform: mobileMenuOpen ? 'scale(1.1)' : 'scale(1)' }}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span style={{ transform: mobileMenuOpen ? 'rotate(45deg) translateY(12px)' : 'rotate(0)' }}></span>
+          <span style={{ opacity: mobileMenuOpen ? '0' : '1' }}></span>
+          <span style={{ transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-12px)' : 'rotate(0)' }}></span>
         </button>
         {mobileMenuOpen && (
           <div className="mobile-menu">
@@ -368,31 +369,27 @@ function App() {
 
       <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
         <section className="hero" id="top">
-          <div className="hero-content">
-            <span className="pill">{t.hero.badge}</span>
-            <h1>{t.hero.title}</h1>
-            <p className="lead">{t.hero.subtitle}</p>
-            <div className="cta-row">
-              <a className="btn primary" href="#contact">
+          <div className="hero-waves">
+            <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+              <path d="M0,64L80,74.7C160,85,320,107,480,106.7C640,107,800,85,960,80C1080,75,1200,75,1200,80L1200,120L0,120Z" fill="currentColor" opacity="0.1"></path>
+              <path d="M0,64L80,69.3C160,75,320,85,480,85.3C640,85,800,75,960,74.7C1080,75,1200,85,1200,90.7L1200,120L0,120Z" fill="currentColor" opacity="0.2"></path>
+              <path d="M0,70L80,75C160,80,320,90,480,90C640,90,800,80,960,75C1080,70,1200,70,1200,75L1200,120L0,120Z" fill="currentColor" opacity="0.3"></path>
+            </svg>
+          </div>
+          <div className="hero-content-center">
+            <h1 className="hero-title">SKALEDIGITALS</h1>
+            <div className="hero-buttons">
+              <a className="btn primary large" href="#contact">
                 {t.hero.ctaPrimary}
               </a>
-              <a className="btn ghost" href="#work">
+              <a className="btn ghost large" href="#work">
                 {t.hero.ctaSecondary}
               </a>
             </div>
-          </div>
-          <div className="hero-panel">
-            <div className="stat reveal" style={{ '--delay': '0.1s' }}>
-              <span>+45%</span>
-              <p>{lang === 'sr' ? 'brzi load time' : 'faster load time'}</p>
-            </div>
-            <div className="stat reveal" style={{ '--delay': '0.2s' }}>
-              <span>+3.2x</span>
-              <p>{lang === 'sr' ? 'CTR optimizacija' : 'CTR optimization'}</p>
-            </div>
-            <div className="stat reveal" style={{ '--delay': '0.3s' }}>
-              <span>24h</span>
-              <p>{lang === 'sr' ? 'odgovor na upit' : 'reply time'}</p>
+            <div className="hero-stars">
+              {[...Array(5)].map((_, i) => (
+                <span key={i} className="star">★</span>
+              ))}
             </div>
           </div>
         </section>
