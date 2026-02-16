@@ -67,6 +67,26 @@ const content = {
           desc: 'Detaljni video kursevi sa receptima za pekarstvo i poslastičarstvo.',
           meta: 'nikolaskakavac.github.io/pekarska-platforma',
           link: 'https://nikolaskakavac.github.io/pekarska-platforma/',
+          screenshotDesktop: 'work/pekarska-desktop.png',
+          screenshotMobile: 'work/pekarska-mobile.png',
+        },
+        {
+          title: 'Culinaria - Sajt za restoran',
+          tag: 'Restaurant Website',
+          desc: 'Elegantna prezentacija restorana sa fokusom na meni, atmosferu i rezervacije.',
+          meta: 'nikolaskakavac.github.io/culinaria',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
+        },
+        {
+          title: 'Frizerski - Sajt za salon',
+          tag: 'Salon Website',
+          desc: 'Moderni sajt za frizerski salon sa jasnim prikazom usluga i kontakta.',
+          meta: 'nikolaskakavac.github.io/frizerski',
+          link: 'https://nikolaskakavac.github.io/frizerski/',
+          screenshotDesktop: 'work/frizerski-desktop.png',
+          screenshotMobile: 'work/frizerski-mobile.png',
         },
         {
           title: 'ArbexFund',
@@ -74,6 +94,8 @@ const content = {
           desc: 'Finansijska platforma sa fokusom na transparentnost i pristupačnost.',
           meta: 'arbexfund.com',
           link: 'https://arbexfund.com',
+          screenshotDesktop: 'work-placeholder.svg',
+          screenshotMobile: 'work-placeholder.svg',
         },
       ],
     },
@@ -209,6 +231,26 @@ const content = {
           desc: 'Detailed video courses with recipes for baking and pastry making.',
           meta: 'nikolaskakavac.github.io/pekarska-platforma',
           link: 'https://nikolaskakavac.github.io/pekarska-platforma/',
+          screenshotDesktop: 'work/pekarska-desktop.png',
+          screenshotMobile: 'work/pekarska-mobile.png',
+        },
+        {
+          title: 'Culinaria - Restaurant website',
+          tag: 'Restaurant Website',
+          desc: 'Elegant restaurant presentation focused on menu, atmosphere and reservations.',
+          meta: 'nikolaskakavac.github.io/culinaria',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
+        },
+        {
+          title: 'Frizerski - Hair salon website',
+          tag: 'Salon Website',
+          desc: 'Modern hair salon website with clear service presentation and contact details.',
+          meta: 'nikolaskakavac.github.io/frizerski',
+          link: 'https://nikolaskakavac.github.io/frizerski/',
+          screenshotDesktop: 'work/frizerski-desktop.png',
+          screenshotMobile: 'work/frizerski-mobile.png',
         },
         {
           title: 'ArbexFund',
@@ -216,6 +258,8 @@ const content = {
           desc: 'Financial platform focused on transparency and accessibility.',
           meta: 'arbexfund.com',
           link: 'https://arbexfund.com',
+          screenshotDesktop: 'work-placeholder.svg',
+          screenshotMobile: 'work-placeholder.svg',
         },
       ],
     },
@@ -691,23 +735,27 @@ function App() {
             exit={{ opacity: 0, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
           >
             <motion.div
-              className="katana-flash"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.14, 0] }}
-              transition={{ duration: 0.78, times: [0, 0.4, 1], ease: 'easeOut' }}
-            ></motion.div>
-            <motion.div
-              className="katana-slash-trail"
-              initial={{ x: '-125%', scaleX: 0.34, opacity: 0 }}
-              animate={{ x: '125%', scaleX: [0.34, 1, 1], opacity: [0, 0.24, 0] }}
-              transition={{ duration: 0.82, times: [0, 0.24, 1], ease: [0.22, 1, 0.36, 1] }}
-            ></motion.div>
-            <motion.div
-              className="katana-slash"
-              initial={{ x: '-125%', scaleX: 0.28, opacity: 0 }}
-              animate={{ x: '125%', scaleX: [0.28, 1, 1], opacity: [0, 1, 0.68] }}
-              transition={{ duration: 0.82, times: [0, 0.22, 1], ease: [0.22, 1, 0.36, 1] }}
-            ></motion.div>
+              className="logo-loader"
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <motion.div
+                className="logo-loader-ring"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.9, repeat: Infinity, ease: 'linear' }}
+              >
+                <img src={withBase('491462317_2497496547265667_8538657457538507949_n.jpg')} alt="Skale Digitals logo" />
+              </motion.div>
+              <motion.span
+                className="logo-loader-label"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: [0.45, 1, 0.45], y: 0 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                Loading...
+              </motion.span>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -843,6 +891,35 @@ function App() {
                 transform: `perspective(1000px) rotateX(${heroTilt.y}deg) rotateY(${heroTilt.x}deg) translateY(${Math.max(-44, scrollY * -0.05)}px)`,
               }}
             >
+              <div className="hero-3d-ui">
+                <div className="hero-3d-top">
+                  <span className="hero-3d-badge">{lang === 'sr' ? 'Skale Digitals' : 'Skale Digitals'}</span>
+                  <span className="hero-3d-live">{lang === 'sr' ? 'Otvoreni projekti' : 'Open projects'}</span>
+                </div>
+
+                <div className="hero-3d-kpis">
+                  <div className="hero-kpi">
+                    <strong>{lang === 'sr' ? 'Web Aplikacije' : 'Web Apps'}</strong>
+                    <span>{lang === 'sr' ? 'React / Next.js' : 'React / Next.js'}</span>
+                  </div>
+                  <div className="hero-kpi">
+                    <strong>{lang === 'sr' ? 'E-commerce' : 'E-commerce'}</strong>
+                    <span>{lang === 'sr' ? 'Stripe / Shopify' : 'Stripe / Shopify'}</span>
+                  </div>
+                  <div className="hero-kpi">
+                    <strong>{lang === 'sr' ? 'SaaS Platforme' : 'SaaS Platforms'}</strong>
+                    <span>{lang === 'sr' ? 'Skalabilna arhitektura' : 'Scalable architecture'}</span>
+                  </div>
+                </div>
+
+                <div className="hero-3d-stack">
+                  <span>{lang === 'sr' ? 'Analiza' : 'Discovery'}</span>
+                  <span>{lang === 'sr' ? 'Dizajn' : 'Design'}</span>
+                  <span>{lang === 'sr' ? 'Razvoj' : 'Development'}</span>
+                  <span>{lang === 'sr' ? 'Lansiranje' : 'Launch'}</span>
+                </div>
+              </div>
+
               <div className="hero-3d-layer layer-a"></div>
               <div className="hero-3d-layer layer-b"></div>
               <div className="hero-3d-layer layer-c"></div>
