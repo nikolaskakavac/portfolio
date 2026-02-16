@@ -51,6 +51,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 92px;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 72%, var(--accent-2) 28%) color-mix(in srgb, var(--bg-secondary) 88%, transparent);
 }
 
 body {
@@ -59,17 +61,95 @@ body {
   overflow-x: hidden;
 }
 
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--bg-secondary) 90%, transparent);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 84%, white 6%), color-mix(in srgb, var(--accent-2) 84%, white 4%));
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 28%, transparent), 0 0 14px color-mix(in srgb, var(--accent) 24%, transparent);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, white 4%), color-mix(in srgb, var(--accent-2) 90%, white 4%));
+}
+
+*::-webkit-scrollbar-corner {
+  background: color-mix(in srgb, var(--bg-secondary) 90%, transparent);
+}
+
+@media (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none;
+  }
+}
+
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
+  isolation: isolate;
+  --scroll-y: 0px;
+  --parallax-offset: 0px;
   background-size: 180% 180%;
-  animation: gradientDrift 18s ease infinite;
+  animation: gradientDrift 16s ease infinite;
   background:
-    radial-gradient(1000px 500px at 0% 0%, color-mix(in srgb, var(--accent) 17%, transparent) 0%, transparent 55%),
-    radial-gradient(900px 460px at 100% 15%, color-mix(in srgb, var(--accent-2) 16%, transparent) 0%, transparent 58%),
+    radial-gradient(1000px 500px at 0% 0%, color-mix(in srgb, var(--accent) 20%, transparent) 0%, transparent 55%),
+    radial-gradient(900px 460px at 100% 15%, color-mix(in srgb, var(--accent-2) 20%, transparent) 0%, transparent 58%),
     linear-gradient(135deg, color-mix(in srgb, var(--bg-primary) 93%, #0a1428) 0%, var(--bg-primary) 45%, color-mix(in srgb, var(--bg-primary) 90%, #06131f) 100%);
+}
+
+.bg-orb-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translate3d(0, calc(var(--parallax-offset) * 0.75), 0);
+  will-change: transform;
+}
+
+.bg-orb {
+  position: absolute;
+  width: clamp(280px, 34vw, 520px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.34;
+  will-change: transform;
+}
+
+.bg-orb.orb-one {
+  top: -8%;
+  left: -6%;
+  background: radial-gradient(circle, #7f5af0 0%, rgba(127, 90, 240, 0) 72%);
+  animation: orbDriftA 24s ease-in-out infinite;
+}
+
+.bg-orb.orb-two {
+  top: 28%;
+  right: -10%;
+  background: radial-gradient(circle, #4c2cbf 0%, rgba(76, 44, 191, 0) 72%);
+  animation: orbDriftB 28s ease-in-out infinite;
+}
+
+.bg-orb.orb-three {
+  bottom: -14%;
+  left: 34%;
+  background: radial-gradient(circle, #7f5af0 0%, rgba(76, 44, 191, 0) 74%);
+  opacity: 0.3;
+  animation: orbDriftC 22s ease-in-out infinite;
 }
 
 a:focus-visible,
@@ -88,6 +168,65 @@ button:focus-visible {
     radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--accent-2) 11%, transparent) 0%, transparent 48%);
   z-index: -1;
   animation: orbFloat 16s ease-in-out infinite;
+  transform: translate3d(0, calc(var(--parallax-offset) * 0.45), 0);
+  will-change: transform;
+}
+
+.page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--primary) 48%, transparent) 0.8px, transparent 0.9px),
+    radial-gradient(circle at 3px 3px, color-mix(in srgb, var(--accent) 24%, transparent) 0.6px, transparent 0.8px);
+  background-size: 4px 4px, 6px 6px;
+  animation: noiseDrift 1.2s steps(2) infinite;
+  transform: translate3d(0, calc(var(--parallax-offset) * 0.25), 0);
+  will-change: transform;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 80%, white 10%);
+  pointer-events: none;
+  z-index: 2000;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.22s ease, transform 0.06s linear;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 2100;
+  pointer-events: none;
+  background: linear-gradient(90deg, #7f5af0, #4c2cbf);
+  box-shadow: 0 0 10px color-mix(in srgb, #7f5af0 45%, transparent);
+  transition: width 0.18s ease-out;
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+.custom-cursor span {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 80%, white 6%);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 42%, transparent);
 }
 
 .site-header {
@@ -151,6 +290,11 @@ button:focus-visible {
 }
 
 .nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
   text-decoration: none;
   color: var(--primary);
   font-size: 1.08rem;
@@ -158,14 +302,27 @@ button:focus-visible {
   letter-spacing: 0.1px;
   padding: 0.78rem 1.02rem;
   border-radius: 12px;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .nav a:hover,
 .nav a:focus-visible {
   color: var(--accent-2);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
   outline: none;
+}
+
+.nav-highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(120deg, rgba(127, 90, 240, 0.18), rgba(76, 44, 191, 0.18));
+  border: 1px solid rgba(127, 90, 240, 0.26);
+  z-index: -1;
+}
+
+.nav-label {
+  position: relative;
+  z-index: 1;
 }
 
 .header-cta {
@@ -399,6 +556,10 @@ button:focus-visible {
     titleGlow 2.2s ease-in-out infinite;
 }
 
+.hero-word {
+  display: inline-block;
+}
+
 .hero h1::after {
   content: "";
   position: absolute;
@@ -410,6 +571,107 @@ button:focus-visible {
   background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 78%, white 8%), color-mix(in srgb, var(--accent-2) 78%, white 8%), transparent);
   opacity: 0.55;
   animation: titleUnderlinePulse 2.8s ease-in-out infinite;
+}
+
+.hero-3d-wrap {
+  width: min(760px, 100%);
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+  transform: translate3d(0, calc(var(--parallax-offset) * -0.6), 0);
+  will-change: transform;
+}
+
+.hero-3d {
+  width: min(620px, 100%);
+  height: 200px;
+  border-radius: 22px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.28s ease;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-secondary) 88%, transparent), color-mix(in srgb, var(--bg-tertiary) 92%, transparent));
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  box-shadow: 0 22px 50px color-mix(in srgb, var(--accent) 28%, transparent);
+  overflow: hidden;
+}
+
+.hero-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, color-mix(in srgb, var(--accent) 26%, transparent) 45%, transparent 70%);
+  background-size: 230% 100%;
+  animation: cardSweep 3.8s linear infinite;
+}
+
+.hero-3d-layer {
+  position: absolute;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--accent-2) 12%, transparent));
+}
+
+.hero-3d-layer.layer-a {
+  width: 76%;
+  height: 34%;
+  top: 20%;
+  left: 12%;
+  transform: translateZ(30px);
+  animation: layerFloatA 5.2s ease-in-out infinite;
+}
+
+.hero-3d-layer.layer-b {
+  width: 58%;
+  height: 26%;
+  top: 45%;
+  left: 28%;
+  transform: translateZ(54px);
+  animation: layerFloatB 4.2s ease-in-out infinite;
+}
+
+.hero-3d-layer.layer-c {
+  width: 30%;
+  height: 18%;
+  top: 14%;
+  left: 54%;
+  transform: translateZ(72px);
+  animation: layerFloatC 3.6s ease-in-out infinite;
+}
+
+.music-toggle {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 980;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.58rem 0.9rem;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--bg-secondary) 96%, transparent), color-mix(in srgb, var(--bg-tertiary) 94%, transparent));
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--accent) 24%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px color-mix(in srgb, var(--accent) 30%, transparent);
+  border-color: color-mix(in srgb, var(--accent-2) 64%, transparent);
+}
+
+.music-toggle.on {
+  border-color: color-mix(in srgb, var(--accent-2) 74%, transparent);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 22%, var(--bg-secondary)), color-mix(in srgb, var(--accent-2) 16%, var(--bg-tertiary)));
+}
+
+.music-toggle.disabled {
+  opacity: 0.65;
 }
 
 .hero h1 strong {
@@ -478,10 +740,6 @@ button:focus-visible {
 }
 
 .proof-card {
-  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
-  border-radius: 14px;
-  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-secondary) 94%, transparent), color-mix(in srgb, var(--bg-tertiary) 94%, transparent));
-  box-shadow: var(--shadow);
   padding: 0.95rem 1rem;
   display: flex;
   flex-direction: column;
@@ -544,12 +802,24 @@ button:focus-visible {
 .btn.primary {
   color: var(--bg-primary);
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  --mag-x: 0px;
+  --mag-y: 0px;
+  transform: translate3d(var(--mag-x), var(--mag-y), 0);
   box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 28%, transparent);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 34%, transparent);
+  transform: translate3d(var(--mag-x), calc(var(--mag-y) - 2px), 0);
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--accent) 34%, transparent),
+    0 0 18px rgba(127, 90, 240, 0.28);
+}
+
+.btn.primary.magnetic-on {
+  box-shadow:
+    0 12px 28px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 0 16px rgba(127, 90, 240, 0.24);
 }
 
 .btn.ghost {
@@ -568,6 +838,24 @@ button:focus-visible {
   flex-direction: column;
   gap: 1.3rem;
   scroll-margin-top: 100px;
+}
+
+.main > .section {
+  position: relative;
+}
+
+.main > .section + .section::before {
+  content: "";
+  position: absolute;
+  top: -1.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 920px);
+  height: 1px;
+  opacity: 0.3;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, #7f5af0, transparent);
+  box-shadow: 0 0 10px rgba(127, 90, 240, 0.24);
 }
 
 .section-header {
@@ -617,13 +905,17 @@ button:focus-visible {
 .work-card,
 .process-card,
 .testimonial,
+.proof-card,
 .stack,
-.contact-card {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: linear-gradient(150deg, color-mix(in srgb, var(--bg-secondary) 95%, transparent), color-mix(in srgb, var(--bg-tertiary) 92%, transparent));
-  box-shadow: var(--shadow);
-  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+.contact-card,
+.cta-banner-content {
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 42%),
+    linear-gradient(140deg, color-mix(in srgb, var(--bg-secondary) 95%, transparent), color-mix(in srgb, var(--bg-tertiary) 94%, transparent));
+  box-shadow: var(--shadow-lg);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
   will-change: transform;
 }
 
@@ -687,7 +979,8 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  transition: transform 0.22s ease, border-color 0.22s ease;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
 }
 
 .work-media {
@@ -728,8 +1021,36 @@ button:focus-visible {
 }
 
 .work-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--accent) 56%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  box-shadow: var(--shadow-lg);
+}
+
+.tilt-emphasis {
+  transform-style: preserve-3d;
+}
+
+.tilt-emphasis .card-icon,
+.tilt-emphasis .process-icon,
+.tilt-emphasis .work-tag {
+  transform: translateZ(22px);
+}
+
+.tilt-emphasis h3 {
+  transform: translateZ(16px);
+}
+
+.tilt-emphasis p,
+.tilt-emphasis .work-meta,
+.tilt-emphasis .step-index,
+.tilt-emphasis .work-media {
+  transform: translateZ(12px);
+}
+
+.tilt-emphasis:hover {
+  border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+  box-shadow:
+    0 20px 42px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 0 24px rgba(127, 90, 240, 0.24);
 }
 
 
@@ -838,13 +1159,7 @@ button:focus-visible {
 }
 
 .cta-banner-content {
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  border-radius: 16px;
   padding: 1.3rem;
-  background:
-    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 42%),
-    linear-gradient(140deg, color-mix(in srgb, var(--bg-secondary) 95%, transparent), color-mix(in srgb, var(--bg-tertiary) 94%, transparent));
-  box-shadow: var(--shadow-lg);
 }
 
 .cta-banner-content h2 {
@@ -967,6 +1282,54 @@ button:focus-visible {
   }
 }
 
+@keyframes noiseDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-2px, 1px, 0);
+  }
+  50% {
+    transform: translate3d(1px, -1px, 0);
+  }
+  75% {
+    transform: translate3d(2px, 1px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes orbDriftA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(42px, 28px, 0) scale(1.08);
+  }
+}
+
+@keyframes orbDriftB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-46px, -24px, 0) scale(1.06);
+  }
+}
+
+@keyframes orbDriftC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(30px, -30px, 0) scale(1.07);
+  }
+}
+
 @keyframes orbFloat {
   0%,
   100% {
@@ -1028,6 +1391,45 @@ button:focus-visible {
   }
 }
 
+@keyframes cardSweep {
+  0% {
+    background-position: 180% 50%;
+  }
+  100% {
+    background-position: -40% 50%;
+  }
+}
+
+@keyframes layerFloatA {
+  0%,
+  100% {
+    transform: translateZ(30px) translateY(0);
+  }
+  50% {
+    transform: translateZ(30px) translateY(-6px);
+  }
+}
+
+@keyframes layerFloatB {
+  0%,
+  100% {
+    transform: translateZ(54px) translateY(0);
+  }
+  50% {
+    transform: translateZ(54px) translateY(8px);
+  }
+}
+
+@keyframes layerFloatC {
+  0%,
+  100% {
+    transform: translateZ(72px) translateY(0);
+  }
+  50% {
+    transform: translateZ(72px) translateY(-7px);
+  }
+}
+
 @keyframes brandSheen {
   0% {
     background-position: 0% 50%;
@@ -1052,6 +1454,14 @@ button:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .bg-orb {
+    filter: blur(95px);
+  }
+
+  .bg-orb.orb-three {
+    display: none;
+  }
+
   .site-header {
     top: 8px;
     width: calc(100% - 1rem);
@@ -1129,6 +1539,16 @@ button:focus-visible {
     justify-content: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  .hero-3d-wrap {
+    width: 100%;
+    margin-top: 0.6rem;
+  }
+
+  .hero-3d {
+    height: 168px;
+    border-radius: 18px;
   }
 
   .hero-buttons {
@@ -1244,6 +1664,17 @@ button:focus-visible {
     gap: 1.1rem;
   }
 
+  .hero-3d-wrap {
+    display: none;
+  }
+
+  .music-toggle {
+    left: 0.72rem;
+    bottom: 0.72rem;
+    padding: 0.52rem 0.78rem;
+    font-size: 0.76rem;
+  }
+
   .hero p {
     font-size: 1.12rem;
     max-width: 92%;
@@ -1282,12 +1713,23 @@ button:focus-visible {
 
   .page,
   .page::before,
+  .page::after,
+  .btn.primary,
+  .bg-orb,
   .brand span,
   .brand-logo,
+  .hero-3d,
+  .hero-3d::before,
+  .hero-3d-layer,
   .work-tag,
   .reveal,
   .highlight-chip {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .btn.primary {
+    transition: none !important;
+    transform: none !important;
   }
 }
