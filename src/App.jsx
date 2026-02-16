@@ -144,7 +144,7 @@ const content = {
       body:
         'Radim na web aplikacijama od 2018. Specijalizujem se u React, Node.js i skalabilnim arhitekturama. Fokus: performanse, bezbednost, user experience.',
       stackLabel: 'Tech Stack',
-      stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
+      stack: ['React / Next.js', 'Node.js / Express', 'Python / Django', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
     },
     contact: {
       title: 'Hajde da radimo zajedno',
@@ -308,7 +308,7 @@ const content = {
       body:
         'Building web applications since 2018. Specialized in React, Node.js and scalable architectures. Focus: performance, security, user experience.',
       stackLabel: 'Tech Stack',
-      stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
+      stack: ['React / Next.js', 'Node.js / Express', 'Python / Django', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
     },
     contact: {
       title: 'Let\'s build',
@@ -1059,6 +1059,16 @@ function App() {
             </div>
             <TiltCard element="div" className="stack" tiltEnabled={tiltEnabled}>
               <span>{t.about.stackLabel}</span>
+              <div className="stack-logos" aria-label={lang === 'sr' ? 'Logoi tehnologija' : 'Technology logos'}>
+                <img src={withBase('logos/react.png')} alt="React" loading="lazy" />
+                <img src={withBase('logos/next.png')} alt="Next.js" loading="lazy" />
+                <img src={withBase('logos/node.png')} alt="Node.js" loading="lazy" />
+                <img src={withBase('logos/express.png')} alt="Express" loading="lazy" />
+                <img src={withBase('logos/python.png')} alt="Python" loading="lazy" />
+                <img src={withBase('logos/django.png')} alt="Django" loading="lazy" />
+                <img src={withBase('logos/mongodb.png')} alt="MongoDB" loading="lazy" />
+                <img src={withBase('logos/postgresql.png')} alt="PostgreSQL" loading="lazy" />
+              </div>
               <ul>
                 {t.about.stack.map((item) => (
                   <li key={item}>{item}</li>

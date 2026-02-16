@@ -1286,6 +1286,60 @@ button:focus-visible {
   gap: 0.58rem;
 }
 
+.stack-logos {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 0.52rem;
+  padding-bottom: 0.2rem;
+  scrollbar-width: none;
+}
+
+.stack-logos::-webkit-scrollbar {
+  display: none;
+}
+
+.stack-logos img {
+  width: 56px;
+  flex: 0 0 56px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+  padding: 0.46rem;
+  border: none;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .stack-logos {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding-bottom: 0;
+    gap: 0.48rem;
+  }
+
+  .stack-logos img {
+    width: 52px;
+    flex: 0 0 52px;
+    height: 40px;
+    padding: 0.36rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack-logos {
+    gap: 0.42rem;
+  }
+
+  .stack-logos img {
+    width: 46px;
+    flex: 0 0 46px;
+    height: 36px;
+    padding: 0.28rem;
+  }
+}
+
 .stack li {
   color: var(--secondary);
   border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
