@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap');
+
 :root {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
@@ -114,7 +117,8 @@ button:focus-visible {
   align-items: center;
   gap: 0.78rem;
   font-size: 1.12rem;
-  font-weight: 800;
+  font-weight: 700;
+  font-family: var(--font-display);
   letter-spacing: 0.5px;
   color: var(--primary);
   white-space: nowrap;
@@ -291,6 +295,11 @@ button:focus-visible {
   cursor: pointer;
 }
 
+.page.menu-open .main {
+  filter: blur(6px);
+  transition: filter 0.2s ease;
+}
+
 .mobile-menu a,
 .mobile-theme-toggle,
 .mobile-lang-toggle {
@@ -352,6 +361,7 @@ button:focus-visible {
   flex-direction: column;
   gap: 1.2rem;
   padding-top: 1.25rem;
+  padding-bottom: 2.1rem;
   position: relative;
   align-items: center;
   text-align: center;
@@ -363,14 +373,48 @@ button:focus-visible {
   line-height: 0.95;
   letter-spacing: -2px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-family: var(--font-display);
+  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent-2) 88%, white 8%), var(--accent));
+  background-size: 220% 220%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-wrap: balance;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  animation: titleShimmer 7s linear infinite, titleLift 3.8s ease-in-out infinite;
 }
 
 .hero h1 strong {
   color: inherit;
+}
+
+.hero + .section {
+  position: relative;
+  margin-top: 0.6rem;
+  padding-top: 2rem;
+}
+
+.hero + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 820px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 52%, transparent), color-mix(in srgb, var(--accent-2) 52%, transparent), transparent);
+}
+
+.hero + .section::after {
+  content: "";
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(88%, 760px);
+  height: 62px;
+  pointer-events: none;
+  background: radial-gradient(60% 100% at 50% 100%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 80%);
 }
 
 .hero p {
@@ -915,6 +959,28 @@ button:focus-visible {
   }
 }
 
+@keyframes titleShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes titleLift {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.005);
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -1157,6 +1223,7 @@ button:focus-visible {
 
   .page,
   .page::before,
+  .hero h1,
   .brand-logo,
   .work-tag,
   .reveal,

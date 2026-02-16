@@ -323,7 +323,7 @@ function App() {
   }
 
   return (
-    <div className="page" data-theme={theme}>
+    <div className={`page ${mobileMenuOpen ? 'menu-open' : ''}`} data-theme={theme}>
       <header className="site-header">
         <div className="brand">
           <img src={withBase('491462317_2497496547265667_8538657457538507949_n.jpg')} alt="Skale Digitals" className="brand-logo" />
@@ -345,37 +345,38 @@ function App() {
           <span></span>
           <span></span>
         </button>
-        {mobileMenuOpen && (
-          <>
+      </header>
+
+      {mobileMenuOpen && (
+        <>
+          <button
+            type="button"
+            className="mobile-menu-backdrop"
+            aria-label="Close menu"
+            onClick={() => setMobileMenuOpen(false)}
+          ></button>
+          <div className="mobile-menu">
+            <a href="#services" onClick={() => setMobileMenuOpen(false)}>{t.nav.services}</a>
+            <a href="#work" onClick={() => setMobileMenuOpen(false)}>{t.nav.work}</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</a>
+            <div className="mobile-menu-divider"></div>
             <button
               type="button"
-              className="mobile-menu-backdrop"
-              aria-label="Close menu"
-              onClick={() => setMobileMenuOpen(false)}
-            ></button>
-            <div className="mobile-menu">
-              <a href="#services" onClick={() => setMobileMenuOpen(false)}>{t.nav.services}</a>
-              <a href="#work" onClick={() => setMobileMenuOpen(false)}>{t.nav.work}</a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</a>
-              <div className="mobile-menu-divider"></div>
-              <button
-                type="button"
-                className="mobile-theme-toggle"
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              >
-                {theme === 'dark' ? 'Light theme' : 'Dark theme'}
-              </button>
-              <button
-                type="button"
-                className="mobile-lang-toggle"
-                onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
-              >
-                {lang === 'sr' ? 'English' : 'Srpski'}
-              </button>
-            </div>
-          </>
-        )}
-      </header>
+              className="mobile-theme-toggle"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? 'Light theme' : 'Dark theme'}
+            </button>
+            <button
+              type="button"
+              className="mobile-lang-toggle"
+              onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
+            >
+              {lang === 'sr' ? 'English' : 'Srpski'}
+            </button>
+          </div>
+        </>
+      )}
 
       <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
         <section className="hero" id="top">
