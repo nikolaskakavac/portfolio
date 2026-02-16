@@ -12,7 +12,7 @@ const content = {
       contact: 'Kontakt',
     },
     hero: {
-      title: 'Digitalni proizvodi koja <strong>funkcionišu</strong>.',
+      title: 'SKALEDIGITALS',
       subtitle:
         'Full-stack razvoj web aplikacija, e-commerce sistema i SaaS platformi. Bržina. Kvalitet. Rezultati.',
       ctaPrimary: 'Konsultacija',
@@ -57,6 +57,8 @@ const content = {
           desc: 'Moderisana tržišta posla, praksi i talenta. Spaja studente, alumni i kompanije.',
           meta: 'poslovi.vercel.app',
           link: 'https://poslovi.vercel.app/',
+          screenshotDesktop: 'work/jobzee-desktop.png',
+          screenshotMobile: 'work/jobzee-mobile.png',
         },
         {
           title: 'Pekarska platforma - Video kursevi',
@@ -152,7 +154,7 @@ const content = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Digital products that <strong>work</strong>.',
+      title: 'SKALEDIGITALS',
       subtitle:
         'Full-stack development of web applications, e-commerce systems and SaaS platforms. Speed. Quality. Results.',
       ctaPrimary: 'Consultation',
@@ -197,6 +199,8 @@ const content = {
           desc: 'Moderated job marketplace connecting students, alumni and companies.',
           meta: 'poslovi.vercel.app',
           link: 'https://poslovi.vercel.app/',
+          screenshotDesktop: 'work/jobzee-desktop.png',
+          screenshotMobile: 'work/jobzee-mobile.png',
         },
         {
           title: 'Bakery Platform - Video courses',
@@ -289,6 +293,7 @@ function App() {
   const [theme, setTheme] = useState('dark')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const t = content[lang]
+  const withBase = (assetPath) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\//, '')}`
 
   useEffect(() => {
     const handleResize = () => {
@@ -301,6 +306,18 @@ function App() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
   const renderIcon = (emoji) => {
     return <span style={{ fontSize: '1.5em' }}>{emoji}</span>
   }
@@ -309,7 +326,7 @@ function App() {
     <div className="page" data-theme={theme}>
       <header className="site-header">
         <div className="brand">
-          <img src="/491462317_2497496547265667_8538657457538507949_n.jpg" alt="Skale Digitals" className="brand-logo" />
+          <img src={withBase('491462317_2497496547265667_8538657457538507949_n.jpg')} alt="Skale Digitals" className="brand-logo" />
           <span>{t.brand}</span>
         </div>
         <nav className="nav">
@@ -317,8 +334,8 @@ function App() {
           <a href="#work">{t.nav.work}</a>
           <a href="#process">{t.nav.process}</a>
           <a href="#about">{t.nav.about}</a>
-          <a href="#contact">{t.nav.contact}</a>
         </nav>
+        <a className="header-cta" href="#contact">{t.nav.contact}</a>
         <button
           className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -329,65 +346,35 @@ function App() {
           <span></span>
         </button>
         {mobileMenuOpen && (
-          <div className="mobile-menu">
-            <a href="#services" onClick={() => setMobileMenuOpen(false)}>{t.nav.services}</a>
-            <a href="#work" onClick={() => setMobileMenuOpen(false)}>{t.nav.work}</a>
-            <a href="#process" onClick={() => setMobileMenuOpen(false)}>{t.nav.process}</a>
-            <a href="#about" onClick={() => setMobileMenuOpen(false)}>{t.nav.about}</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</a>
-            <div className="mobile-menu-divider"></div>
+          <>
             <button
               type="button"
-              className="mobile-theme-toggle"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? 'Light theme' : 'Dark theme'}
-            </button>
-            <button
-              type="button"
-              className="mobile-lang-toggle"
-              onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
-            >
-              {lang === 'sr' ? 'English' : 'Srpski'}
-            </button>
-          </div>
+              className="mobile-menu-backdrop"
+              aria-label="Close menu"
+              onClick={() => setMobileMenuOpen(false)}
+            ></button>
+            <div className="mobile-menu">
+              <a href="#services" onClick={() => setMobileMenuOpen(false)}>{t.nav.services}</a>
+              <a href="#work" onClick={() => setMobileMenuOpen(false)}>{t.nav.work}</a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</a>
+              <div className="mobile-menu-divider"></div>
+              <button
+                type="button"
+                className="mobile-theme-toggle"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                {theme === 'dark' ? 'Light theme' : 'Dark theme'}
+              </button>
+              <button
+                type="button"
+                className="mobile-lang-toggle"
+                onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
+              >
+                {lang === 'sr' ? 'English' : 'Srpski'}
+              </button>
+            </div>
+          </>
         )}
-        <div className="header-controls">
-          <div className="theme-switch" role="group" aria-label="Theme">
-            <button
-              type="button"
-              className={theme === 'dark' ? 'active' : ''}
-              onClick={() => setTheme('dark')}
-              title="Dark theme"
-            >
-              🌙
-            </button>
-            <button
-              type="button"
-              className={theme === 'light' ? 'active' : ''}
-              onClick={() => setTheme('light')}
-              title="Light theme"
-            >
-              ☀️
-            </button>
-          </div>
-          <div className="lang-switch" role="group" aria-label="Language">
-            <button
-              type="button"
-              className={lang === 'sr' ? 'active' : ''}
-              onClick={() => setLang('sr')}
-            >
-              SR
-            </button>
-            <button
-              type="button"
-              className={lang === 'en' ? 'active' : ''}
-              onClick={() => setLang('en')}
-            >
-              EN
-            </button>
-          </div>
-        </div>
       </header>
 
       <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
@@ -440,6 +427,40 @@ function App() {
                 style={{ '--delay': `${0.1 + index * 0.08}s` }}
               >
                 <div className="work-tag">{item.tag}</div>
+                {(item.screenshotDesktop || item.screenshotMobile) && (
+                  <div className="work-media">
+                    {item.screenshotDesktop && (
+                      <div className="work-shot desktop">
+                        <img
+                          src={withBase(item.screenshotDesktop)}
+                          alt={`${item.title} desktop preview`}
+                          loading="lazy"
+                          onError={(event) => {
+                            if (!event.currentTarget.dataset.fallback) {
+                              event.currentTarget.dataset.fallback = '1'
+                              event.currentTarget.src = withBase('work-placeholder.svg')
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
+                    {item.screenshotMobile && (
+                      <div className="work-shot mobile">
+                        <img
+                          src={withBase(item.screenshotMobile)}
+                          alt={`${item.title} mobile preview`}
+                          loading="lazy"
+                          onError={(event) => {
+                            if (!event.currentTarget.dataset.fallback) {
+                              event.currentTarget.dataset.fallback = '1'
+                              event.currentTarget.src = withBase('work-placeholder.svg')
+                            }
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
                 <span className="work-meta">{item.meta}</span>
