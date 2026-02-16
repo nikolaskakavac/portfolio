@@ -369,6 +369,8 @@ function App() {
   const [musicAvailable, setMusicAvailable] = useState(true)
   const [playHeroReveal, setPlayHeroReveal] = useState(true)
   const musicRef = useRef(null)
+  const scrollFrameRef = useRef(null)
+  const latestScrollRef = useRef(0)
   const t = content[lang]
   const featuredTiltProps = {
     tiltEnabled,
@@ -436,21 +438,46 @@ function App() {
   useEffect(() => {
     const finePointer = window.matchMedia('(pointer: fine)').matches
     setCursorEnabled(finePointer)
+    let mobilePerformanceMode = window.matchMedia('(max-width: 900px), (pointer: coarse)').matches
 
     const updateTiltState = () => {
       setTiltEnabled(window.matchMedia('(hover: hover) and (pointer: fine)').matches)
     }
+
+    const updatePerformanceMode = () => {
+      mobilePerformanceMode = window.matchMedia('(max-width: 900px), (pointer: coarse)').matches
+      if (mobilePerformanceMode) {
+        setScrollY(0)
+        setParallaxOffset(0)
+      }
+    }
+
     updateTiltState()
+    updatePerformanceMode()
 
     const handleScroll = () => {
-      const currentY = window.scrollY || 0
-      const documentHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = documentHeight > 0 ? Math.min(100, Math.max(0, (currentY / documentHeight) * 100)) : 0
-      const parallax = Math.min(40, currentY * 0.05)
+      latestScrollRef.current = window.scrollY || 0
 
-      setScrollY(currentY)
-      setScrollProgress(progress)
-      setParallaxOffset(parallax)
+      if (scrollFrameRef.current !== null) return
+
+      scrollFrameRef.current = window.requestAnimationFrame(() => {
+        const currentY = latestScrollRef.current
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight
+        const progress = documentHeight > 0 ? Math.min(100, Math.max(0, (currentY / documentHeight) * 100)) : 0
+
+        setScrollProgress((previous) => (Math.abs(previous - progress) > 0.15 ? progress : previous))
+
+        if (mobilePerformanceMode) {
+          setScrollY(0)
+          setParallaxOffset(0)
+        } else {
+          const parallax = Math.min(40, currentY * 0.05)
+          setScrollY(currentY)
+          setParallaxOffset(parallax)
+        }
+
+        scrollFrameRef.current = null
+      })
     }
 
     const handleMouseMove = (event) => {
@@ -463,6 +490,7 @@ function App() {
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateTiltState)
+    window.addEventListener('resize', updatePerformanceMode)
 
     if (finePointer) {
       window.addEventListener('mousemove', handleMouseMove)
@@ -472,6 +500,13 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', updateTiltState)
+      window.removeEventListener('resize', updatePerformanceMode)
+
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current)
+        scrollFrameRef.current = null
+      }
+
       if (finePointer) {
         window.removeEventListener('mousemove', handleMouseMove)
         window.removeEventListener('mouseout', handleMouseLeaveWindow)

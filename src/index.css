@@ -1454,6 +1454,23 @@ button:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .page {
+    animation: none;
+    background-size: 100% 100%;
+  }
+
+  .page::before,
+  .page::after {
+    animation: none;
+    transform: none;
+  }
+
+  .page::after,
+  .bg-orb-field,
+  .hero-3d-wrap {
+    display: none;
+  }
+
   .bg-orb {
     filter: blur(95px);
   }
@@ -1539,16 +1556,6 @@ button:focus-visible {
     justify-content: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
-  }
-
-  .hero-3d-wrap {
-    width: 100%;
-    margin-top: 0.6rem;
-  }
-
-  .hero-3d {
-    height: 168px;
-    border-radius: 18px;
   }
 
   .hero-buttons {
