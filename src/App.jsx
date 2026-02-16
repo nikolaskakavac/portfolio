@@ -20,7 +20,7 @@ const content = {
       ctaSecondary: 'Portfolio',
     },
     services: {
-      title: 'Što nude',
+      title: 'Šta nudim',
       items: [
         {
           title: 'Web Aplikacije',
@@ -34,7 +34,7 @@ const content = {
         },
         {
           title: 'SaaS Platforme',
-          desc: 'Subscription modeli, user management, analytics. Sve što trebate.',
+          desc: 'Subscription modeli, user management i analytics. Sve što vam treba.',
           icon: '🔐',
         },
         {
@@ -43,7 +43,7 @@ const content = {
           icon: '🔄',
         },
         {
-          title: 'Tehnički Konsalting',
+          title: 'Tehničko savetovanje',
           desc: 'Procenjujem projekat, dajem roadmap, preporučujem arhitekturu.',
           icon: '🎯',
         },
@@ -55,7 +55,7 @@ const content = {
         {
           title: 'Jobzee - Platforma za karijeru',
           tag: 'Full-stack + AI',
-          desc: 'Moderisana tržišta posla, praksi i talenta. Spaja studente, alumni i kompanije.',
+          desc: 'Moderna platforma za poslove, prakse i talente. Povezuje studente, alumniste i kompanije.',
           meta: 'poslovi.vercel.app',
           link: 'https://poslovi.vercel.app/',
           screenshotDesktop: 'work/jobzee-desktop.png',
@@ -109,17 +109,17 @@ const content = {
         },
         {
           title: '2. Dizajn',
-          desc: 'Pravim detaljne wireframe-a, UI/UX dizajn i tehnički spektifikum.',
+          desc: 'Pravim detaljne wireframe-ove, UI/UX dizajn i tehničku specifikaciju.',
           icon: '🎨',
         },
         {
           title: '3. Razvoj',
-          desc: 'Bezbedna, skalabilna, brza arhitektura sa best practices kodom.',
+          desc: 'Bezbedna, skalabilna i brza arhitektura sa kodom po najboljim praksama.',
           icon: '⚙️',
         },
         {
           title: '4. Lansiranje',
-          desc: 'Testing, deployment, monitoring. Sistem je siguran i gotov za produkciju.',
+          desc: 'Testiranje, deployment i monitoring. Sistem je siguran i spreman za produkciju.',
           icon: '🚀',
         },
       ],
@@ -147,18 +147,18 @@ const content = {
       stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL / MongoDB', 'AWS / Vercel', 'Stripe / PayPal'],
     },
     contact: {
-      title: 'Hajde da radimo',
+      title: 'Hajde da radimo zajedno',
       body:
-        'Želite li da saznate kako mogu da vam pomognem? Pošalite kratko opisanje projekta i budzeta.',
+        'Želite li da saznate kako mogu da vam pomognem? Pošaljite kratak opis projekta i budžeta.',
       emailLabel: 'Email',
       email: 'nikolaskakavac22@gmail.com',
-      note: 'Odgovaram u roku od 24h.',
+      note: 'Odgovaram u roku od 24 h.',
       cta: 'Pošalji poruku',
       ctaSecondary: 'Zakaži brzi poziv',
     },
     ctaBanner: {
       title: 'Spreman projekat za ozbiljan rast?',
-      body: 'Rezerviši besplatnu 15-min konsultaciju i dobijaš konkretan plan narednih koraka.',
+      body: 'Rezerviši besplatnu 15-minutnu konsultaciju i dobijaš konkretan plan narednih koraka.',
       primary: 'Rezerviši termin',
       secondary: 'Pogledaj radove',
     },
@@ -491,7 +491,11 @@ function App() {
   }, [mobileMenuOpen])
 
   useEffect(() => {
-    const finePointer = window.matchMedia('(pointer: fine)').matches
+    const finePointer =
+      window.matchMedia('(pointer: fine)').matches ||
+      window.matchMedia('(any-pointer: fine)').matches ||
+      window.matchMedia('(hover: hover)').matches
+
     setCursorEnabled(finePointer)
     let mobilePerformanceMode = window.matchMedia('(max-width: 900px), (pointer: coarse)').matches
 
@@ -536,28 +540,35 @@ function App() {
     }
 
     const handleMouseMove = (event) => {
+      if (!cursorEnabled) {
+        setCursorEnabled(true)
+      }
       setCursorVisible(true)
       setCursorPos({ x: event.clientX, y: event.clientY })
     }
 
-    const handleMouseLeaveWindow = (event) => {
+    const handleWindowBlur = () => setCursorVisible(false)
+    const handleMouseOutWindow = (event) => {
       if (!event.relatedTarget && !event.toElement) {
         setCursorVisible(false)
       }
     }
 
-    const handleWindowBlur = () => setCursorVisible(false)
+    const handleVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') {
+        setCursorVisible(false)
+      }
+    }
 
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', updateTiltState)
     window.addEventListener('resize', updatePerformanceMode)
 
-    if (finePointer) {
-      window.addEventListener('mousemove', handleMouseMove)
-      window.addEventListener('mouseout', handleMouseLeaveWindow)
-      window.addEventListener('blur', handleWindowBlur)
-    }
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseout', handleMouseOutWindow)
+    window.addEventListener('blur', handleWindowBlur)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -569,11 +580,10 @@ function App() {
         scrollFrameRef.current = null
       }
 
-      if (finePointer) {
-        window.removeEventListener('mousemove', handleMouseMove)
-        window.removeEventListener('mouseout', handleMouseLeaveWindow)
-        window.removeEventListener('blur', handleWindowBlur)
-      }
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('mouseout', handleMouseOutWindow)
+      window.removeEventListener('blur', handleWindowBlur)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [])
 
@@ -732,7 +742,7 @@ function App() {
           <motion.div
             className="katana-loader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+            exit={{ opacity: 0, transition: { duration: 0.85, ease: [0.25, 0.1, 0.25, 1] } }}
           >
             <motion.div
               className="logo-loader"
@@ -740,25 +750,21 @@ function App() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
-              <motion.div
-                className="logo-loader-ring"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1.9, repeat: Infinity, ease: 'linear' }}
-              >
+              <div className="logo-loader-ring">
                 <img src={withBase('491462317_2497496547265667_8538657457538507949_n.jpg')} alt="Skale Digitals logo" />
-              </motion.div>
-              <motion.span
-                className="logo-loader-label"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: [0.45, 1, 0.45], y: 0 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                Loading...
-              </motion.span>
+              </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <div
+        className={`custom-cursor ${cursorVisible ? 'visible' : ''}`}
+        style={{ transform: `translate3d(${cursorPos.x}px, ${cursorPos.y}px, 0)` }}
+        aria-hidden="true"
+      >
+        <span></span>
+      </div>
 
       <div
         className={`page ${mobileMenuOpen ? 'menu-open' : ''} ${showIntroLoader ? 'intro-pending' : 'intro-ready'}`}
@@ -772,16 +778,6 @@ function App() {
         <div className="bg-orb orb-two"></div>
         <div className="bg-orb orb-three"></div>
       </div>
-
-      {cursorEnabled && (
-        <div
-          className={`custom-cursor ${cursorVisible ? 'visible' : ''}`}
-          style={{ transform: `translate3d(${cursorPos.x}px, ${cursorPos.y}px, 0)` }}
-          aria-hidden="true"
-        >
-          <span></span>
-        </div>
-      )}
 
       <header className="site-header">
         <div className="brand">
@@ -813,6 +809,44 @@ function App() {
             )
           })}
         </nav>
+        <div className="header-controls">
+          <div className="theme-switch" role="group" aria-label={lang === 'sr' ? 'Izbor teme' : 'Theme switch'}>
+            <button
+              type="button"
+              className={theme === 'dark' ? 'active' : ''}
+              onClick={() => setTheme('dark')}
+              aria-label={lang === 'sr' ? 'Tamna tema' : 'Dark theme'}
+            >
+              🌙
+            </button>
+            <button
+              type="button"
+              className={theme === 'light' ? 'active' : ''}
+              onClick={() => setTheme('light')}
+              aria-label={lang === 'sr' ? 'Svetla tema' : 'Light theme'}
+            >
+              ☀️
+            </button>
+          </div>
+          <div className="lang-switch" role="group" aria-label={lang === 'sr' ? 'Izbor jezika' : 'Language switch'}>
+            <button
+              type="button"
+              className={lang === 'sr' ? 'active' : ''}
+              onClick={() => setLang('sr')}
+              aria-label="Srpski"
+            >
+              SR
+            </button>
+            <button
+              type="button"
+              className={lang === 'en' ? 'active' : ''}
+              onClick={() => setLang('en')}
+              aria-label="English"
+            >
+              EN
+            </button>
+          </div>
+        </div>
         <a className="header-cta" href="#contact">{t.nav.contact}</a>
         <button
           className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}
@@ -837,21 +871,6 @@ function App() {
             <a href="#services" onClick={() => setMobileMenuOpen(false)}>{t.nav.services}</a>
             <a href="#work" onClick={() => setMobileMenuOpen(false)}>{t.nav.work}</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</a>
-            <div className="mobile-menu-divider"></div>
-            <button
-              type="button"
-              className="mobile-theme-toggle"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-              {theme === 'dark' ? 'Light theme' : 'Dark theme'}
-            </button>
-            <button
-              type="button"
-              className="mobile-lang-toggle"
-              onClick={() => setLang(lang === 'sr' ? 'en' : 'sr')}
-            >
-              {lang === 'sr' ? 'English' : 'Srpski'}
-            </button>
           </div>
         </>
       )}
@@ -930,7 +949,7 @@ function App() {
         <section className="section" id="services">
           <div className="section-header">
             <h2>{t.services.title}</h2>
-            <p>{lang === 'sr' ? 'Paketi prilagodjeni vasem cilju.' : 'Packages tailored to your goals.'}</p>
+            <p>{lang === 'sr' ? 'Paketi prilagođeni vašem cilju.' : 'Packages tailored to your goals.'}</p>
           </div>
           <div className="grid cards">
             {t.services.items.map((item, index) => (
@@ -952,7 +971,7 @@ function App() {
         <section className="section" id="work">
           <div className="section-header">
             <h2>{t.work.title}</h2>
-            <p>{lang === 'sr' ? 'Primere prilagodjavam brandu i industriji.' : 'Each build is tuned to the brand and industry.'}</p>
+            <p>{lang === 'sr' ? 'Primere prilagođavam brendu i industriji.' : 'Each build is tuned to the brand and industry.'}</p>
           </div>
           <div className="grid work-grid">
             {t.work.items.map((item, index) => (
@@ -1012,7 +1031,7 @@ function App() {
         <section className="section" id="process">
           <div className="section-header">
             <h2>{t.process.title}</h2>
-            <p>{lang === 'sr' ? 'Transparentno, bez iznenadjenja.' : 'Transparent, no surprises.'}</p>
+            <p>{lang === 'sr' ? 'Transparentno, bez iznenađenja.' : 'Transparent, no surprises.'}</p>
           </div>
           <div className="grid process-grid">
             {t.process.steps.map((step, index) => (
