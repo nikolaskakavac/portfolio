@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion'
 import './index.css'
 
 const content = {
@@ -368,6 +368,7 @@ function App() {
   const [musicEnabled, setMusicEnabled] = useState(false)
   const [musicAvailable, setMusicAvailable] = useState(true)
   const [playHeroReveal, setPlayHeroReveal] = useState(true)
+  const [showIntroLoader, setShowIntroLoader] = useState(true)
   const musicRef = useRef(null)
   const scrollFrameRef = useRef(null)
   const latestScrollRef = useRef(0)
@@ -411,6 +412,16 @@ function App() {
       },
     },
   }
+
+  useEffect(() => {
+    const introTimer = window.setTimeout(() => {
+      setShowIntroLoader(false)
+    }, 860)
+
+    return () => {
+      window.clearTimeout(introTimer)
+    }
+  }, [])
 
   useEffect(() => {
     const handleResize = () => {
@@ -485,7 +496,13 @@ function App() {
       setCursorPos({ x: event.clientX, y: event.clientY })
     }
 
-    const handleMouseLeaveWindow = () => setCursorVisible(false)
+    const handleMouseLeaveWindow = (event) => {
+      if (!event.relatedTarget && !event.toElement) {
+        setCursorVisible(false)
+      }
+    }
+
+    const handleWindowBlur = () => setCursorVisible(false)
 
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -495,6 +512,7 @@ function App() {
     if (finePointer) {
       window.addEventListener('mousemove', handleMouseMove)
       window.addEventListener('mouseout', handleMouseLeaveWindow)
+      window.addEventListener('blur', handleWindowBlur)
     }
 
     return () => {
@@ -510,6 +528,7 @@ function App() {
       if (finePointer) {
         window.removeEventListener('mousemove', handleMouseMove)
         window.removeEventListener('mouseout', handleMouseLeaveWindow)
+        window.removeEventListener('blur', handleWindowBlur)
       }
     }
   }, [])
@@ -663,11 +682,41 @@ function App() {
   }
 
   return (
-    <div
-      className={`page ${mobileMenuOpen ? 'menu-open' : ''}`}
-      data-theme={theme}
-      style={{ '--scroll-y': `${scrollY}px`, '--parallax-offset': `${parallaxOffset}px` }}
-    >
+    <>
+      <AnimatePresence>
+        {showIntroLoader && (
+          <motion.div
+            className="katana-loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+          >
+            <motion.div
+              className="katana-flash"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.14, 0] }}
+              transition={{ duration: 0.78, times: [0, 0.4, 1], ease: 'easeOut' }}
+            ></motion.div>
+            <motion.div
+              className="katana-slash-trail"
+              initial={{ x: '-125%', scaleX: 0.34, opacity: 0 }}
+              animate={{ x: '125%', scaleX: [0.34, 1, 1], opacity: [0, 0.24, 0] }}
+              transition={{ duration: 0.82, times: [0, 0.24, 1], ease: [0.22, 1, 0.36, 1] }}
+            ></motion.div>
+            <motion.div
+              className="katana-slash"
+              initial={{ x: '-125%', scaleX: 0.28, opacity: 0 }}
+              animate={{ x: '125%', scaleX: [0.28, 1, 1], opacity: [0, 1, 0.68] }}
+              transition={{ duration: 0.82, times: [0, 0.22, 1], ease: [0.22, 1, 0.36, 1] }}
+            ></motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div
+        className={`page ${mobileMenuOpen ? 'menu-open' : ''} ${showIntroLoader ? 'intro-pending' : 'intro-ready'}`}
+        data-theme={theme}
+        style={{ '--scroll-y': `${scrollY}px`, '--parallax-offset': `${parallaxOffset}px` }}
+      >
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true"></div>
 
       <div className="bg-orb-field" aria-hidden="true">
@@ -1004,7 +1053,8 @@ function App() {
           {t.footer.social}
         </a>
       </footer>
-    </div>
+      </div>
+    </>
   )
 }
 

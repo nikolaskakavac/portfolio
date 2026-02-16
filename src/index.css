@@ -61,6 +61,62 @@ body {
   overflow-x: hidden;
 }
 
+.katana-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background:
+    radial-gradient(110% 110% at 50% 45%, rgba(15, 18, 34, 0.36) 0%, rgba(11, 11, 18, 0.95) 48%, #0b0b12 100%),
+    #0b0b12;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.katana-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 24% at 50% 50%, rgba(127, 90, 240, 0.2) 0%, rgba(76, 44, 191, 0.08) 36%, rgba(11, 11, 18, 0) 72%);
+}
+
+.katana-slash,
+.katana-slash-trail {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 66vw;
+  max-width: 900px;
+  min-width: 340px;
+  transform-origin: left center;
+  border-radius: 999px;
+}
+
+.katana-slash {
+  height: 2px;
+  background: linear-gradient(90deg, #7f5af0, #4c2cbf);
+  box-shadow:
+    0 0 10px rgba(127, 90, 240, 0.42),
+    0 0 22px rgba(76, 44, 191, 0.3);
+  transform: translateY(-50%) rotate(-16deg);
+}
+
+.katana-slash-trail {
+  height: 8px;
+  opacity: 0.2;
+  background: linear-gradient(90deg, rgba(127, 90, 240, 0), rgba(127, 90, 240, 0.62), rgba(76, 44, 191, 0));
+  filter: blur(11px);
+  transform: translateY(-50%) rotate(-16deg);
+}
+
+.page.intro-pending {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page.intro-ready {
+  opacity: 1;
+  transition: opacity 0.36s ease;
+}
+
 *::-webkit-scrollbar {
   width: 12px;
   height: 12px;
