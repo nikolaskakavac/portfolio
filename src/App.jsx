@@ -54,6 +54,7 @@ const content = {
       items: [
         {
           title: 'Jobzee - Platforma za karijeru',
+          category: 'Platforme i SaaS',
           tag: 'Full-stack + AI',
           desc: 'Moderna platforma za poslove, prakse i talente. Povezuje studente, alumniste i kompanije.',
           meta: 'poslovi.vercel.app',
@@ -63,6 +64,7 @@ const content = {
         },
         {
           title: 'Pekarska platforma - Video kursevi',
+          category: 'Platforme i SaaS',
           tag: 'Education SaaS',
           desc: 'Detaljni video kursevi sa receptima za pekarstvo i poslastičarstvo.',
           meta: 'nikolaskakavac.github.io/pekarska-platforma',
@@ -72,6 +74,7 @@ const content = {
         },
         {
           title: 'Culinaria - Sajt za restoran',
+          category: 'Biznis sajtovi',
           tag: 'Restaurant Website',
           desc: 'Elegantna prezentacija restorana sa fokusom na meni, atmosferu i rezervacije.',
           meta: 'nikolaskakavac.github.io/culinaria',
@@ -81,6 +84,7 @@ const content = {
         },
         {
           title: 'Frizerski - Sajt za salon',
+          category: 'Biznis sajtovi',
           tag: 'Salon Website',
           desc: 'Moderni sajt za frizerski salon sa jasnim prikazom usluga i kontakta.',
           meta: 'nikolaskakavac.github.io/frizerski',
@@ -89,7 +93,48 @@ const content = {
           screenshotMobile: 'work/frizerski-mobile.png',
         },
         {
+          title: 'Milena Vasić - Psihoterapeutski sajt',
+          category: 'Biznis sajtovi',
+          tag: 'Healthcare Website',
+          desc: 'Web prezentacija psihoterapeuta sa fokusom na usluge, poverenje i kontakt.',
+          meta: 'nikolaskakavac.github.io/psihoterapeut-milena-vasic',
+          link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
+          screenshotDesktop: 'work/psihoterapeut-desktop.png',
+          screenshotMobile: 'work/psihoterapeut-mobile.png',
+        },
+        {
+          title: 'InkVibe - Tattoo salon',
+          category: 'Biznis sajtovi',
+          tag: 'Studio Website',
+          desc: 'Sajt tattoo salona sa modernim vizuelnim identitetom i jasnom prezentacijom usluga.',
+          meta: 'nikolaskakavac.github.io/InkVibe',
+          link: 'https://nikolaskakavac.github.io/InkVibe/',
+          screenshotDesktop: 'work/inkvibe-desktop.png',
+          screenshotMobile: 'work/inkvibe-mobile.png',
+        },
+        {
+          title: 'PixelPulse - Digitalna agencija',
+          category: 'Biznis sajtovi',
+          tag: 'Agency Website',
+          desc: 'Promo sajt digitalne agencije sa fokusom na usluge, portfolio i konverziju.',
+          meta: 'nikolaskakavac.github.io/PixelPulse',
+          link: 'https://nikolaskakavac.github.io/PixelPulse/',
+          screenshotDesktop: 'work/pixelpulse-desktop.png',
+          screenshotMobile: 'work/pixelpulse-mobile.png',
+        },
+        {
+          title: 'Blackjack - Browser igra',
+          category: 'Igre',
+          tag: 'JavaScript Game',
+          desc: 'Interaktivna blackjack igra sa čistom logikom poteza i responzivnim interfejsom.',
+          meta: 'nikolaskakavac.github.io/blackjack',
+          link: 'https://nikolaskakavac.github.io/blackjack/',
+          screenshotDesktop: 'work/blackjack-desktop.png',
+          screenshotMobile: 'work/blackjack-mobile.png',
+        },
+        {
           title: 'ArbexFund',
+          category: 'Platforme i SaaS',
           tag: 'Fintech',
           desc: 'Finansijska platforma sa fokusom na transparentnost i pristupačnost.',
           meta: 'arbexfund.com',
@@ -218,6 +263,7 @@ const content = {
       items: [
         {
           title: 'Jobzee - Career platform',
+          category: 'Platforms & SaaS',
           tag: 'Full-stack + AI',
           desc: 'Moderated job marketplace connecting students, alumni and companies.',
           meta: 'poslovi.vercel.app',
@@ -227,6 +273,7 @@ const content = {
         },
         {
           title: 'Bakery Platform - Video courses',
+          category: 'Platforms & SaaS',
           tag: 'Education SaaS',
           desc: 'Detailed video courses with recipes for baking and pastry making.',
           meta: 'nikolaskakavac.github.io/pekarska-platforma',
@@ -236,6 +283,7 @@ const content = {
         },
         {
           title: 'Culinaria - Restaurant website',
+          category: 'Business Websites',
           tag: 'Restaurant Website',
           desc: 'Elegant restaurant presentation focused on menu, atmosphere and reservations.',
           meta: 'nikolaskakavac.github.io/culinaria',
@@ -245,6 +293,7 @@ const content = {
         },
         {
           title: 'Frizerski - Hair salon website',
+          category: 'Business Websites',
           tag: 'Salon Website',
           desc: 'Modern hair salon website with clear service presentation and contact details.',
           meta: 'nikolaskakavac.github.io/frizerski',
@@ -253,7 +302,48 @@ const content = {
           screenshotMobile: 'work/frizerski-mobile.png',
         },
         {
+          title: 'Milena Vasić - Psychotherapy website',
+          category: 'Business Websites',
+          tag: 'Healthcare Website',
+          desc: 'Psychotherapy website focused on services, trust, and direct client contact.',
+          meta: 'nikolaskakavac.github.io/psihoterapeut-milena-vasic',
+          link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
+          screenshotDesktop: 'work/psihoterapeut-desktop.png',
+          screenshotMobile: 'work/psihoterapeut-mobile.png',
+        },
+        {
+          title: 'InkVibe - Tattoo salon website',
+          category: 'Business Websites',
+          tag: 'Studio Website',
+          desc: 'Tattoo studio website with a bold visual style and clear service presentation.',
+          meta: 'nikolaskakavac.github.io/InkVibe',
+          link: 'https://nikolaskakavac.github.io/InkVibe/',
+          screenshotDesktop: 'work/inkvibe-desktop.png',
+          screenshotMobile: 'work/inkvibe-mobile.png',
+        },
+        {
+          title: 'PixelPulse - Digital agency website',
+          category: 'Business Websites',
+          tag: 'Agency Website',
+          desc: 'Digital agency promo website focused on services, portfolio, and conversion.',
+          meta: 'nikolaskakavac.github.io/PixelPulse',
+          link: 'https://nikolaskakavac.github.io/PixelPulse/',
+          screenshotDesktop: 'work/pixelpulse-desktop.png',
+          screenshotMobile: 'work/pixelpulse-mobile.png',
+        },
+        {
+          title: 'Blackjack - Browser game',
+          category: 'Games',
+          tag: 'JavaScript Game',
+          desc: 'Interactive blackjack game with clean game flow and responsive UI.',
+          meta: 'nikolaskakavac.github.io/blackjack',
+          link: 'https://nikolaskakavac.github.io/blackjack/',
+          screenshotDesktop: 'work/blackjack-desktop.png',
+          screenshotMobile: 'work/blackjack-mobile.png',
+        },
+        {
           title: 'ArbexFund',
+          category: 'Platforms & SaaS',
           tag: 'Fintech',
           desc: 'Financial platform focused on transparency and accessibility.',
           meta: 'arbexfund.com',
@@ -396,7 +486,7 @@ function TiltCard({
 }
 
 function App() {
-  const [lang, setLang] = useState('sr')
+  const [lang, setLang] = useState('en')
   const [theme, setTheme] = useState('dark')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -435,6 +525,14 @@ function App() {
     .trim()
     .split(/\s+/)
     .filter(Boolean)
+  const groupedWorkItems = t.work.items.reduce((groups, item) => {
+    const category = item.category || (lang === 'sr' ? 'Ostalo' : 'Other')
+    if (!groups.has(category)) {
+      groups.set(category, [])
+    }
+    groups.get(category).push(item)
+    return groups
+  }, new Map())
 
   const headingContainerVariants = {
     hidden: {},
@@ -973,57 +1071,64 @@ function App() {
             <h2>{t.work.title}</h2>
             <p>{lang === 'sr' ? 'Primere prilagođavam brendu i industriji.' : 'Each build is tuned to the brand and industry.'}</p>
           </div>
-          <div className="grid work-grid">
-            {t.work.items.map((item, index) => (
-              <TiltCard
-                key={item.title}
-                element="a"
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="work-card reveal tilt-emphasis"
-                style={{ '--delay': `${0.1 + index * 0.08}s` }}
-                {...featuredTiltProps}
-              >
-                <div className="work-tag">{item.tag}</div>
-                {(item.screenshotDesktop || item.screenshotMobile) && (
-                  <div className="work-media">
-                    {item.screenshotDesktop && (
-                      <div className="work-shot desktop">
-                        <img
-                          src={withBase(item.screenshotDesktop)}
-                          alt={`${item.title} desktop preview`}
-                          loading="lazy"
-                          onError={(event) => {
-                            if (!event.currentTarget.dataset.fallback) {
-                              event.currentTarget.dataset.fallback = '1'
-                              event.currentTarget.src = withBase('work-placeholder.svg')
-                            }
-                          }}
-                        />
-                      </div>
-                    )}
-                    {item.screenshotMobile && (
-                      <div className="work-shot mobile">
-                        <img
-                          src={withBase(item.screenshotMobile)}
-                          alt={`${item.title} mobile preview`}
-                          loading="lazy"
-                          onError={(event) => {
-                            if (!event.currentTarget.dataset.fallback) {
-                              event.currentTarget.dataset.fallback = '1'
-                              event.currentTarget.src = withBase('work-placeholder.svg')
-                            }
-                          }}
-                        />
-                      </div>
-                    )}
-                  </div>
-                )}
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-                <span className="work-meta">{item.meta}</span>
-              </TiltCard>
+          <div className="work-categories">
+            {Array.from(groupedWorkItems.entries()).map(([category, items], categoryIndex) => (
+              <div key={category} className="work-category">
+                <h3 className="work-category-title">{category}</h3>
+                <div className="grid work-grid">
+                  {items.map((item, index) => (
+                    <TiltCard
+                      key={item.title}
+                      element="a"
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-card reveal tilt-emphasis"
+                      style={{ '--delay': `${0.1 + categoryIndex * 0.08 + index * 0.06}s` }}
+                      {...featuredTiltProps}
+                    >
+                      <div className="work-tag">{item.tag}</div>
+                      {(item.screenshotDesktop || item.screenshotMobile) && (
+                        <div className="work-media">
+                          {item.screenshotDesktop && (
+                            <div className="work-shot desktop">
+                              <img
+                                src={withBase(item.screenshotDesktop)}
+                                alt={`${item.title} desktop preview`}
+                                loading="lazy"
+                                onError={(event) => {
+                                  if (!event.currentTarget.dataset.fallback) {
+                                    event.currentTarget.dataset.fallback = '1'
+                                    event.currentTarget.src = withBase('work-placeholder.svg')
+                                  }
+                                }}
+                              />
+                            </div>
+                          )}
+                          {item.screenshotMobile && (
+                            <div className="work-shot mobile">
+                              <img
+                                src={withBase(item.screenshotMobile)}
+                                alt={`${item.title} mobile preview`}
+                                loading="lazy"
+                                onError={(event) => {
+                                  if (!event.currentTarget.dataset.fallback) {
+                                    event.currentTarget.dataset.fallback = '1'
+                                    event.currentTarget.src = withBase('work-placeholder.svg')
+                                  }
+                                }}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      <h3>{item.title}</h3>
+                      <p>{item.desc}</p>
+                      <span className="work-meta">{item.meta}</span>
+                    </TiltCard>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>
@@ -1121,7 +1226,7 @@ function App() {
             </div>
           </div>
           <TiltCard element="div" className="contact-card" tiltEnabled={tiltEnabled}>
-            <p>{lang === 'sr' ? 'Brz start, jasne metrike i roadmapa.' : 'Fast start, clear metrics, and a roadmap.'}</p>
+            <p className="contact-card-note">{lang === 'sr' ? 'Brz start, jasne metrike i roadmapa.' : 'Fast start, clear metrics, and a roadmap.'}</p>
             <a className="btn primary" href="mailto:nikolaskakavac22@gmail.com">
               {t.contact.cta}
             </a>
@@ -1155,9 +1260,35 @@ function App() {
           <span>{t.footer.line}</span>
           <span>© 2026 {t.brand}</span>
         </div>
-        <a href="https://instagram.com/skaledigitals" target="_blank" rel="noopener noreferrer" className="social-link">
-          {t.footer.social}
-        </a>
+        <div className="footer-socials">
+          <a
+            href="https://instagram.com/skaledigitals"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link social-icon-link"
+            aria-label="Instagram"
+          >
+            <img src={withBase('logos/insta.avif')} alt="Instagram" loading="lazy" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/nikolaskakavac/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link social-icon-link"
+            aria-label="LinkedIn"
+          >
+            <img src={withBase('logos/linkedin.png')} alt="LinkedIn" loading="lazy" />
+          </a>
+          <a
+            href="https://github.com/nikolaskakavac"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-link social-icon-link"
+            aria-label="GitHub"
+          >
+            <img src={withBase('logos/github.png')} alt="GitHub" loading="lazy" />
+          </a>
+        </div>
       </footer>
       </div>
     </>

@@ -1132,6 +1132,27 @@ button:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
+.work-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.work-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.work-category-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent-2) 86%, var(--primary));
+  padding-left: 0.1rem;
+}
+
 .work-card {
   text-decoration: none;
   color: inherit;
@@ -1368,6 +1389,15 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+  color: #fff;
+}
+
+.contact-card p,
+.contact-card .btn,
+.contact-meta strong,
+.contact-meta em,
+.contact-meta span {
+  color: #fff;
 }
 
 .cta-banner {
@@ -1464,6 +1494,36 @@ button:focus-visible {
   text-decoration: none;
   color: var(--accent);
   font-weight: 700;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.social-icon-link {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--bg-secondary) 92%, transparent);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-icon-link img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.social-icon-link:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 62%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 24%, transparent);
 }
 
 .social-link:hover {
