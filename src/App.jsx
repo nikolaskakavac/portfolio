@@ -428,7 +428,7 @@ function App() {
     if (!finePointer) return
 
     const moveCursor = (event) => {
-      cursorElement.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`
+      cursorElement.style.transform = `translate3d(${event.clientX - 11}px, ${event.clientY - 11}px, 0)`
       cursorElement.classList.add('visible')
     }
 
@@ -437,12 +437,12 @@ function App() {
     }
 
     const rootElement = document.documentElement
-    window.addEventListener('mousemove', moveCursor, { passive: true })
+    window.addEventListener('pointermove', moveCursor, { passive: true })
     rootElement.addEventListener('mouseleave', hideCursor)
     window.addEventListener('blur', hideCursor)
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor)
+      window.removeEventListener('pointermove', moveCursor)
       rootElement.removeEventListener('mouseleave', hideCursor)
       window.removeEventListener('blur', hideCursor)
     }

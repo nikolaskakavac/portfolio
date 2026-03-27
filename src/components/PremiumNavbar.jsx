@@ -331,28 +331,29 @@ export default function PremiumNavbar({
         </nav>
 
         {mobileOpen && (
-          <div className="fixed inset-0 top-20 z-[1190] bg-slate-950/96 px-4 pb-6 pt-4 backdrop-blur-2xl md:hidden">
-            <div className="mx-auto flex h-full w-full max-w-[1400px] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.94),rgba(2,6,23,0.98))] p-4 shadow-[0_28px_80px_rgba(2,8,23,0.46)]">
-            <ul className="space-y-1">
+          <div className="mobile-nav-overlay md:hidden">
+            <div className="mobile-nav-panel">
+              <ul className="mobile-nav-list">
               {navItems.map((item) => {
                 const Icon = navIcons[item.icon]
 
                 return (
-                  <li key={item.label}>
+                  <li key={item.label} className="w-full">
                     <a
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+                      className="mobile-nav-link group"
+                      style={{ '--mobile-link-delay': `${0.05 + navItems.indexOf(item) * 0.05}s` }}
                     >
-                      {Icon ? <Icon className="text-[15px] text-white/65" aria-hidden="true" /> : null}
-                      {item.label}
+                      {Icon ? <Icon className="mobile-nav-link-icon" aria-hidden="true" /> : null}
+                      <span>{item.label}</span>
                     </a>
                   </li>
                 )
               })}
-            </ul>
+              </ul>
 
-              <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/8 pt-4">
+              <div className="mobile-nav-footer">
                 <div ref={langMenuRef}>
                   <LanguageDropdown
                     lang={lang}

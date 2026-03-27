@@ -608,11 +608,12 @@ button:focus-visible {
   border-radius: 50%;
   border: 1px solid #a78bfa;
   pointer-events: none;
-  z-index: 3200;
+  z-index: 5000;
   opacity: 0;
   transform: translate3d(-100px, -100px, 0);
   transition: opacity 0.22s ease, transform 0.06s linear;
   box-shadow: 0 0 14px rgba(127, 90, 240, 0.42);
+  will-change: transform, opacity;
 }
 
 .scroll-progress {
@@ -2437,6 +2438,37 @@ button:focus-visible {
   }
 }
 
+@keyframes mobileMenuFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobileMenuPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mobileMenuLinkIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 900px) {
   .page {
     animation: none;
@@ -3173,12 +3205,133 @@ button:focus-visible {
   height: 22px;
   border: 1px solid rgba(143, 168, 255, 0.75);
   box-shadow: 0 0 10px rgba(143, 168, 255, 0.26);
+  opacity: 1;
 }
 
 .trust-mode .custom-cursor span {
   inset: 5px;
   background: rgba(143, 168, 255, 0.95);
   box-shadow: none;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  top: 5rem;
+  z-index: 1190;
+  padding: 1rem;
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(22px);
+  animation: mobileMenuFade 0.22s ease both;
+}
+
+.mobile-nav-panel {
+  margin: 0 auto;
+  display: flex;
+  height: calc(100dvh - 6rem);
+  width: 100%;
+  max-width: 1400px;
+  flex-direction: column;
+  overflow-y: auto;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at top right, rgba(97, 103, 241, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.97), rgba(2, 6, 23, 0.99));
+  box-shadow: 0 28px 80px rgba(2, 8, 23, 0.46);
+  padding: 1rem 1rem 1.1rem;
+  animation: mobileMenuPanelIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-nav-list li {
+  width: 100%;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  width: 100%;
+  min-height: clamp(4.9rem, 10vh, 5.8rem);
+  padding: 1.15rem 0.8rem;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: #f8faff;
+  text-decoration: none;
+  text-align: center;
+  font-size: clamp(1.55rem, 6vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  animation: mobileMenuLinkIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--mobile-link-delay, 0s);
+  transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease, opacity 0.22s ease;
+}
+
+.mobile-nav-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(97, 103, 241, 0.32);
+  color: #ffffff;
+}
+
+.mobile-nav-link span {
+  position: relative;
+}
+
+.mobile-nav-link span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.42rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6167F1, rgba(97, 103, 241, 0.14));
+  transform: translateX(-50%);
+  transition: width 0.24s ease;
+}
+
+.mobile-nav-link:hover span::after {
+  width: min(120px, 42%);
+}
+
+.mobile-nav-link-icon {
+  width: 1.48rem;
+  height: 1.48rem;
+  color: #f5f7fb;
+  flex: 0 0 auto;
+  opacity: 1;
+  filter: drop-shadow(0 0 12px rgba(97, 103, 241, 0.18));
+  transition: transform 0.22s ease, color 0.22s ease, filter 0.22s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-link-icon {
+  transform: scale(1.04);
+  color: #6167F1;
+  filter: drop-shadow(0 0 16px rgba(97, 103, 241, 0.32));
+}
+
+.mobile-nav-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-cta-btn,
