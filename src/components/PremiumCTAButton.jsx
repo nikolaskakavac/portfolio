@@ -20,7 +20,7 @@ export default function PremiumCTAButton({
       <span className="pointer-events-none absolute inset-[1px] rounded-[11px] border border-white/10" />
       <span className="relative z-10 flex items-center gap-2">
         <span>{children}</span>
-        {icon ? <HiPhone className="text-[16px] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" /> : null}
+        {icon ? <HiPhone className="text-[16px]" aria-hidden="true" /> : null}
       </span>
     </a>
   )

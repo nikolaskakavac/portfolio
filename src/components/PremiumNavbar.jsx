@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import {
   HiOutlineBriefcase,
   HiOutlineChartBar,
@@ -242,6 +242,12 @@ export default function PremiumNavbar({
   }, [])
 
   useEffect(() => {
+    if (!mobileOpen) {
+      setLangOpen(false)
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
     const handlePointerDown = (event) => {
       if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
         setLangOpen(false)
@@ -313,7 +319,6 @@ export default function PremiumNavbar({
                   handleLangClick={handleLangClick}
                 />
               </div>
-
               <PremiumCTAButton href="#contact" onClick={handleCtaClick}>
                 Book a Free Call
               </PremiumCTAButton>
@@ -322,7 +327,10 @@ export default function PremiumNavbar({
             <button
               type="button"
               aria-label="Toggle menu"
-              onClick={() => setMobileOpen((v) => !v)}
+              onClick={() => {
+                setLangOpen(false)
+                setMobileOpen((v) => !v)
+              }}
               className="ml-auto inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 text-white/80 transition hover:bg-white/10 md:hidden"
             >
               <span className="text-lg leading-none">{mobileOpen ? '×' : '≡'}</span>
@@ -334,23 +342,26 @@ export default function PremiumNavbar({
           <div className="mobile-nav-overlay md:hidden">
             <div className="mobile-nav-panel">
               <ul className="mobile-nav-list">
-              {navItems.map((item) => {
-                const Icon = navIcons[item.icon]
+                {navItems.map((item, index) => {
+                  const Icon = navIcons[item.icon]
 
-                return (
-                  <li key={item.label} className="w-full">
-                    <a
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="mobile-nav-link group"
-                      style={{ '--mobile-link-delay': `${0.05 + navItems.indexOf(item) * 0.05}s` }}
-                    >
-                      {Icon ? <Icon className="mobile-nav-link-icon" aria-hidden="true" /> : null}
-                      <span>{item.label}</span>
-                    </a>
-                  </li>
-                )
-              })}
+                  return (
+                    <li key={item.label} className="w-full">
+                      <a
+                        href={item.href}
+                        onClick={() => {
+                          setLangOpen(false)
+                          setMobileOpen(false)
+                        }}
+                        className="mobile-nav-link group"
+                        style={{ '--mobile-link-delay': `${0.05 + index * 0.05}s` }}
+                      >
+                        {Icon ? <Icon className="mobile-nav-link-icon" aria-hidden="true" /> : null}
+                        <span>{item.label}</span>
+                      </a>
+                    </li>
+                  )
+                })}
               </ul>
 
               <div className="mobile-nav-footer">

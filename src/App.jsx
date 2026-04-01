@@ -10,6 +10,7 @@ import {
   HiOutlineSwatch,
 } from 'react-icons/hi2'
 import Preloader from './components/Preloader'
+import PremiumCTAButton from './components/PremiumCTAButton'
 import PremiumNavbar from './components/PremiumNavbar'
 import './index.css'
 
@@ -26,7 +27,7 @@ const content = {
       contact: 'Kontakt',
     },
     hero: {
-      title: 'Your website should make you money. I build websites that turn visitors into paying clients.',
+      title: 'Get more clients online.',
       subtitle:
         'Od landing stranica do ozbiljnijih platformi. Ako firmi treba sajt ili aplikacija koja izgleda profesionalno, radi brzo i uliva poverenje pravim klijentima, to je ono što radim.',
       ctaPrimary: 'Zakaži besplatan poziv',
@@ -56,20 +57,20 @@ const content = {
       subtitle: 'Kada klijent angažuje mene, cilj je da dobije sajt ili aplikaciju koja izgleda ozbiljno, radi brzo i može odmah da se koristi u poslu.',
       cards: [
         {
-          title: 'Desetine projekata za realne firme',
-          body: 'Radio sam 30-40 klijenata i 60-70+ sajtova i web projekata za različite tipove firmi i usluga.',
-          meta: 'Business websites',
+          title: 'Marko Petrovic',
+          body: 'Pre sajta smo izgledali kao jos jedna lokalna firma. Posle novog homepage-a ljudi mnogo cesce dodju vec spremni za razgovor, jer odmah razumeju cime se bavimo i zasto da nas kontaktiraju.',
+          meta: 'Direktor, gradjevinska firma',
         },
         {
-          title: 'Širina koja pomaže projektu',
-          body: 'Biznis sajtovi, full-stack aplikacije, payment integracije, API povezivanja, AI chatbotovi i održavanje nakon lansiranja.',
-          meta: 'Design + development',
+          title: 'Jelena Markovic',
+          body: 'Najvise nam je znacilo sto je sve slozeno tako da klijent brzo vidi usluge, cene i sledeci korak. Manje vremena trosimo na objasnjavanje u porukama, a vise na stvarne rezervacije.',
+          meta: 'Vlasnica, beauty studio',
         },
         {
-          title: 'Brza isporuka bez haosa',
-          body: 'Brz sam kada je cilj jasan, ali ne jurim brzinu po cenu kvaliteta. Fokus je da isporuka bude čista, profesionalna i održiva.',
-          meta: 'Execution',
-        },
+          title: 'Daniel Foster',
+          body: 'We needed a site that looked sharp enough for investors but still simple for customers. The final result gave us a cleaner pitch, better first impressions, and a much more serious online presence.',
+          meta: 'Co-founder, SaaS startup',
+        }
       ],
       strip: ['Profesionalan izgled', 'Jasna struktura', 'Brz i održiv development'],
     },
@@ -77,49 +78,109 @@ const content = {
       title: 'Izdvojeni case studies',
       subtitle: 'Tri projekta koja najbolje pokazuju kvalitet dizajna, jasnoću strukture i način na koji pristupam klijentskim sajtovima.',
       primaryCta: 'Pogledaj projekat',
-      secondaryCta: 'Pošalji upit',
-      items: [
+      secondaryCta: 'Pogledaj sve radove',
+      allTitle: 'Svi radovi',
+      allSubtitle: 'Pregled svih sajtova i web projekata iz portfolija, sa screenshotovima za desktop i mobile prikaz.',
+      allItems: [
         {
-          title: 'Milena Vasić',
+          title: 'InkVibe',
+          category: 'Tattoo studio website',
+          meta: 'Creative service brand',
+          description: 'Vizuelno jak sajt za tattoo studio, sa fokusom na portfolio radova i jasan booking tok.',
+          link: 'https://nikolaskakavac.github.io/InkVibe/',
+          screenshotDesktop: 'work/inkvibe-desktop.png',
+          screenshotMobile: 'work/inkvibe-mobile.png',
+        },
+        {
+          title: 'Milena Vasic',
           category: 'Healthcare website',
-          challenge: 'Kod ovakvog sajta najvažnije je da korisnik odmah oseti poverenje i jasno razume kome je usluga namenjena.',
-          solution: 'Mirniji vizuelni pravac, jasna struktura sekcija i fokus na informacije koje pomažu osobi da se javi bez dileme.',
-          result: 'Sajt koji deluje profesionalno, smireno i mnogo lakše vodi do prvog kontakta.',
           meta: 'Psychotherapy practice',
+          description: 'Smiren i profesionalan sajt koji gradi poverenje i vodi korisnika pravo do prvog kontakta.',
           link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
           screenshotDesktop: 'work/psihoterapeut-desktop.png',
           screenshotMobile: 'work/psihoterapeut-mobile.png',
         },
         {
+          title: 'Culinaria',
+          category: 'Restaurant website',
+          meta: 'Hospitality brand',
+          description: 'Restoranski sajt koji ističe atmosferu, ponudu i vodi posetioce brže ka rezervaciji.',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
+        },
+        {
+          title: 'Pekarska platforma',
+          category: 'Bakery website',
+          meta: 'Food business',
+          description: 'Web prezentacija za pekarski biznis sa jačom ponudom proizvoda i preglednijom strukturom.',
+          link: 'https://nikolaskakavac.github.io/pekarska-platforma/',
+          screenshotDesktop: 'work/pekarska-desktop.png',
+          screenshotMobile: 'work/pekarska-mobile.png',
+        },
+        {
+          title: 'Frizerski salon',
+          category: 'Beauty website',
+          meta: 'Salon brand',
+          description: 'Sajt za salon sa čistim prikazom usluga, brenda i jasnim putem do rezervacije.',
+          link: 'https://nikolaskakavac.github.io/frizerski/',
+          screenshotDesktop: 'work/frizerski-desktop.png',
+          screenshotMobile: 'work/frizerski-mobile.png',
+        },
+        {
+          title: 'PixelPulse',
+          category: 'Agency website',
+          meta: 'Digital brand',
+          description: 'Agencijski sajt sa modernijim vizuelnim smerom i jačim fokusom na ponudu i credibility.',
+          link: 'https://nikolaskakavac.github.io/PixelPulse/',
+          screenshotDesktop: 'work/pixelpulse-desktop.png',
+          screenshotMobile: 'work/pixelpulse-mobile.png',
+        },
+        {
+          title: 'Jobzee',
+          category: 'Platform & SaaS',
+          meta: 'Career platform',
+          description: 'Platformski interfejs sa fokusom na pregledne tokove, jasnoću i ozbiljniji product utisak.',
+          link: 'https://poslovi.vercel.app/',
+          screenshotDesktop: 'work/jobzee-desktop.png',
+          screenshotMobile: 'work/jobzee-mobile.png',
+        },
+      ],
+      items: [
+        {
           title: 'InkVibe',
           category: 'Tattoo studio website',
-          challenge: 'Kod tattoo studija sajt mora odmah da deluje upečatljivo, profesionalno i dovoljno jasno da posetilac poželi da zakaže termin.',
-          solution: 'Vizuelno jači pravac, jasna prezentacija radova, bolja struktura sekcija i fokus na booking tok.',
-          result: 'Sajt koji ostavlja ozbiljniji utisak brenda i mnogo lakše vodi korisnika ka upitu ili rezervaciji.',
+          challenge: 'Kod tattoo studija sajt mora odmah da deluje upecljivo, profesionalno i dovoljno jasno da posetilac pozeli da zakaze termin.',
+          solution: 'Vizuelno jaci pravac, jasna prezentacija radova, bolja struktura sekcija i fokus na booking tok.',
+          result: 'Sajt koji ostavlja ozbiljniji utisak brenda i mnogo lakse vodi korisnika ka upitu ili rezervaciji.',
           meta: 'Creative service brand',
           link: 'https://nikolaskakavac.github.io/InkVibe/',
           screenshotDesktop: 'work/inkvibe-desktop.png',
           screenshotMobile: 'work/inkvibe-mobile.png',
         },
         {
-          title: 'Jobzee',
-          category: 'Platform & SaaS',
-          challenge: 'Kod platformi nije dovoljno da interfejs bude moderan. Mora da ostane jasan, brz i razumljiv različitim tipovima korisnika.',
-          solution: 'Full-stack pristup sa fokusom na UX tokove, preglednost interfejsa i bazu spremnu za dalje funkcionalnosti.',
-          result: 'Proizvod koji izgleda ozbiljnije, radi jasnije i lakše može da raste kroz nove iteracije.',
-          meta: 'Career platform',
-          link: 'https://poslovi.vercel.app/',
-          screenshotDesktop: 'work/jobzee-desktop.png',
-          screenshotMobile: 'work/jobzee-mobile.png',
+          title: 'Milena Vasic',
+          category: 'Healthcare website',
+          challenge: 'Kod ovakvog sajta najvaznije je da korisnik odmah oseti poverenje i jasno razume kome je usluga namenjena.',
+          solution: 'Mirniji vizuelni pravac, jasna struktura sekcija i fokus na informacije koje pomazu osobi da se javi bez dileme.',
+          result: 'Sajt koji deluje profesionalno, smireno i mnogo lakse vodi do prvog kontakta.',
+          meta: 'Psychotherapy practice',
+          link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
+          screenshotDesktop: 'work/psihoterapeut-desktop.png',
+          screenshotMobile: 'work/psihoterapeut-mobile.png',
+        },
+        {
+          title: 'Culinaria',
+          category: 'Restaurant website',
+          challenge: 'Kod restoranskog sajta najbitnije je da meni, atmosfera i rezervacija budu jasni odmah, bez suvisnih koraka.',
+          solution: 'Elegantniji vizuelni identitet, jaci fokus na ponudu i fotografije, plus jednostavniji tok do rezervacije ili kontakta.',
+          result: 'Sajt koji deluje premium, bolje predstavlja restoran i korisnika brze vodi do odluke da rezervise.',
+          meta: 'Hospitality brand',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
         },
       ],
-      archive: [
-        { title: 'Pekarska platforma', link: 'https://nikolaskakavac.github.io/pekarska-platforma/' },
-        { title: 'Frizerski salon', link: 'https://nikolaskakavac.github.io/frizerski/' },
-        { title: 'InkVibe studio', link: 'https://nikolaskakavac.github.io/InkVibe/' },
-        { title: 'PixelPulse agency', link: 'https://nikolaskakavac.github.io/PixelPulse/' },
-      ],
-    },
     services: {
       title: 'Usluge',
       subtitle: 'Usluge su postavljene tako da firma može da krene od jednostavnijeg sajta, a zatim da raste ka naprednijem proizvodu i održavanju.',
@@ -216,9 +277,9 @@ const content = {
       contact: 'Contact',
     },
     hero: {
-      title: 'Your website should make you money. I build websites that turn visitors into paying clients.',
+      title: 'Get more clients online.',
       subtitle:
-        'From landing pages to advanced platforms. If a company needs a website or app that looks professional, runs fast, and builds trust with the right clients, that is what I do.',
+        'Built to convert. Designed to grow.',
       ctaPrimary: 'Book a free call',
       ctaSecondary: 'View case studies',
       micro: 'Reply within 24h • clear plan after the first conversation • SR / EN collaboration',
@@ -246,20 +307,20 @@ const content = {
       subtitle: 'When a client works with me, the goal is to get a website or application that looks serious, runs fast, and can be used in real business immediately.',
       cards: [
         {
-          title: 'Dozens of projects for real companies',
-          body: 'I have worked with 30-40 clients and delivered 60-70+ websites and web projects across different industries and business types.',
-          meta: 'Business websites',
+          title: 'Marko Petrovic',
+          body: 'Before the redesign, we looked like just another local company. After the new homepage, people come into calls much better prepared because they instantly understand what we do and why they should contact us.',
+          meta: 'Director, construction company',
         },
         {
-          title: 'Range that helps the project',
-          body: 'Business websites, full-stack applications, payment integrations, API connections, AI chatbots, and support after launch.',
-          meta: 'Design + development',
+          title: 'Jelena Markovic',
+          body: 'What helped most was the way the site was structured around services, pricing, and the next step. We spend less time explaining things in messages and more time handling real bookings.',
+          meta: 'Owner, beauty studio',
         },
         {
-          title: 'Fast delivery without chaos',
-          body: 'I work fast when the goal is clear, but never at the cost of quality. The focus is on clean, professional, and maintainable delivery.',
-          meta: 'Execution',
-        },
+          title: 'Daniel Foster',
+          body: 'We needed a site that looked sharp enough for investors but still simple for customers. The final result gave us a cleaner pitch, better first impressions, and a much more serious online presence.',
+          meta: 'Co-founder, SaaS startup',
+        }
       ],
       strip: ['Professional presentation', 'Clear structure', 'Fast and maintainable build'],
     },
@@ -268,18 +329,74 @@ const content = {
       subtitle: 'Three projects that best show design quality, structure clarity, and how I approach client-facing websites.',
       primaryCta: 'Open project',
       secondaryCta: 'View all work',
-      items: [
+      allTitle: 'All work',
+      allSubtitle: 'A full view of the websites and web projects in the portfolio, including desktop and mobile previews.',
+      allItems: [
+        {
+          title: 'InkVibe',
+          category: 'Tattoo studio website',
+          meta: 'Creative service brand',
+          description: 'A bold studio website focused on portfolio presentation and a clearer path to booking.',
+          link: 'https://nikolaskakavac.github.io/InkVibe/',
+          screenshotDesktop: 'work/inkvibe-desktop.png',
+          screenshotMobile: 'work/inkvibe-mobile.png',
+        },
         {
           title: 'Milena Vasic',
           category: 'Healthcare website',
-          challenge: 'Trust and clarity around services had to feel stronger than the design itself.',
-          solution: 'A structure built around calm communication, clearer information, and a direct path to contact.',
-          result: 'A more professional presence and an easier decision for the first conversation.',
           meta: 'Psychotherapy practice',
+          description: 'A calm, trust-focused website built to make the first contact feel easier and more natural.',
           link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
           screenshotDesktop: 'work/psihoterapeut-desktop.png',
           screenshotMobile: 'work/psihoterapeut-mobile.png',
         },
+        {
+          title: 'Culinaria',
+          category: 'Restaurant website',
+          meta: 'Hospitality brand',
+          description: 'A restaurant website designed to highlight atmosphere, menu, and move visitors faster toward reservation.',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
+        },
+        {
+          title: 'Bakery platform',
+          category: 'Bakery website',
+          meta: 'Food business',
+          description: 'A bakery presentation site with a clearer product offer and a stronger visual identity.',
+          link: 'https://nikolaskakavac.github.io/pekarska-platforma/',
+          screenshotDesktop: 'work/pekarska-desktop.png',
+          screenshotMobile: 'work/pekarska-mobile.png',
+        },
+        {
+          title: 'Hair salon',
+          category: 'Beauty website',
+          meta: 'Salon brand',
+          description: 'A salon website with a cleaner service structure, stronger brand feel, and easier booking flow.',
+          link: 'https://nikolaskakavac.github.io/frizerski/',
+          screenshotDesktop: 'work/frizerski-desktop.png',
+          screenshotMobile: 'work/frizerski-mobile.png',
+        },
+        {
+          title: 'PixelPulse',
+          category: 'Agency website',
+          meta: 'Digital brand',
+          description: 'An agency-style website with a more modern visual direction and stronger offer presentation.',
+          link: 'https://nikolaskakavac.github.io/PixelPulse/',
+          screenshotDesktop: 'work/pixelpulse-desktop.png',
+          screenshotMobile: 'work/pixelpulse-mobile.png',
+        },
+        {
+          title: 'Jobzee',
+          category: 'Platform & SaaS',
+          meta: 'Career platform',
+          description: 'A product-focused interface built around clarity, cleaner user flows, and a more serious SaaS presence.',
+          link: 'https://poslovi.vercel.app/',
+          screenshotDesktop: 'work/jobzee-desktop.png',
+          screenshotMobile: 'work/jobzee-mobile.png',
+        },
+      ],
+      items: [
         {
           title: 'InkVibe',
           category: 'Tattoo studio website',
@@ -292,23 +409,29 @@ const content = {
           screenshotMobile: 'work/inkvibe-mobile.png',
         },
         {
-          title: 'Jobzee',
-          category: 'Platform & SaaS',
-          challenge: 'A more complex product needed to stay clear and accessible for multiple user types.',
-          solution: 'A full-stack platform focused on clarity, user flows, and a modern interface system.',
-          result: 'A more serious product presence and a base ready for further growth and iteration.',
-          meta: 'Career platform',
-          link: 'https://poslovi.vercel.app/',
-          screenshotDesktop: 'work/jobzee-desktop.png',
-          screenshotMobile: 'work/jobzee-mobile.png',
+          title: 'Milena Vasic',
+          category: 'Healthcare website',
+          challenge: 'Trust and clarity around services had to feel stronger than the design itself.',
+          solution: 'A structure built around calm communication, clearer information, and a direct path to contact.',
+          result: 'A more professional presence and an easier decision for the first conversation.',
+          meta: 'Psychotherapy practice',
+          link: 'https://nikolaskakavac.github.io/psihoterapeut-milena-vasic/',
+          screenshotDesktop: 'work/psihoterapeut-desktop.png',
+          screenshotMobile: 'work/psihoterapeut-mobile.png',
+        },
+        {
+          title: 'Culinaria',
+          category: 'Restaurant website',
+          challenge: 'A restaurant website has to make the menu, atmosphere, and reservation path clear within seconds, without unnecessary friction.',
+          solution: 'A more refined visual direction, stronger focus on the offer and photography, and a simpler path toward booking or contact.',
+          result: 'A website that feels more premium, represents the brand better, and moves visitors faster toward a reservation decision.',
+          meta: 'Hospitality brand',
+          link: 'https://nikolaskakavac.github.io/culinaria/',
+          screenshotDesktop: 'work/culinaria-desktop.png',
+          screenshotMobile: 'work/culinaria-mobile.png',
         },
       ],
-      archive: [
-        { title: 'Bakery platform', link: 'https://nikolaskakavac.github.io/pekarska-platforma/' },
-        { title: 'Hair salon', link: 'https://nikolaskakavac.github.io/frizerski/' },
-        { title: 'InkVibe studio', link: 'https://nikolaskakavac.github.io/InkVibe/' },
-        { title: 'PixelPulse agency', link: 'https://nikolaskakavac.github.io/PixelPulse/' },
-      ],
+    },
     },
     services: {
       title: 'Services',
@@ -396,6 +519,82 @@ const content = {
   },
 }
 
+const fallbackContent = {
+  nav: {
+    proof: 'Results',
+    work: 'Case studies',
+    services: 'Services',
+    process: 'Process',
+    about: 'About',
+    resources: 'Resources',
+    contact: 'Contact',
+  },
+  hero: {
+    title: 'Get more clients online.',
+    subtitle: 'Built to convert. Designed to grow.',
+  },
+  proof: {
+    title: 'Client feedback',
+    subtitle: 'Selected work and results.',
+    strip: [],
+    cards: [],
+  },
+  work: {
+    title: 'Featured case studies',
+    subtitle: 'Selected projects.',
+    primaryCta: 'Open project',
+    secondaryCta: 'View all work',
+    allTitle: 'All work',
+    allSubtitle: 'Portfolio projects.',
+    items: [],
+    allItems: [],
+  },
+  services: {
+    title: 'Services',
+    subtitle: '',
+    items: [],
+  },
+  process: {
+    title: 'Process',
+    subtitle: '',
+    steps: [],
+  },
+  about: {
+    title: 'About',
+    body: '',
+    points: [],
+    stackLabel: 'Expertise',
+    stack: [],
+  },
+  resources: {
+    title: 'Resources',
+    subtitle: '',
+    items: [],
+  },
+  ctaBanner: {
+    title: '',
+    body: '',
+    primary: 'Book a call',
+    secondary: '',
+  },
+  contact: {
+    title: 'Contact',
+    body: '',
+    emailLabel: 'Email',
+    email: '',
+    note: '',
+    formLabels: { name: 'Name', email: 'Email', type: 'Project type', budget: 'Budget', details: 'Short brief' },
+    submit: 'Send inquiry',
+    success: '',
+    projectTypes: [],
+    budgetOptions: [],
+  },
+  footer: {
+    line: '',
+    links: [],
+  },
+}
+
 function TiltCard({ element = 'div', className, style, children, tiltEnabled, maxRotation = 4, hoverScale = 1.015, ...rest }) {
   void tiltEnabled
   void maxRotation
@@ -407,10 +606,62 @@ function App() {
   const [lang, setLang] = useState('en')
   const [showIntroLoader, setShowIntroLoader] = useState(true)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [showAllWork, setShowAllWork] = useState(false)
   const cursorRef = useRef(null)
   const processSectionRef = useRef(null)
 
-  const t = content[lang]
+  const activeLang = typeof lang === 'string' ? lang.toLowerCase() : 'en'
+  const t = content?.[activeLang] ?? content?.en ?? content?.sr ?? fallbackContent
+  const nav = t?.nav ?? fallbackContent.nav
+  const hero = t?.hero ?? fallbackContent.hero
+  const proof = t?.proof ?? fallbackContent.proof
+  const work = t?.work ?? fallbackContent.work
+  const services = t?.services ?? fallbackContent.services
+  const process = t?.process ?? fallbackContent.process
+  const about = t?.about ?? fallbackContent.about
+  const resources = t?.resources ?? fallbackContent.resources
+  const ctaBanner = t?.ctaBanner ?? fallbackContent.ctaBanner
+  const contact = t?.contact ?? fallbackContent.contact
+  const footer = t?.footer ?? fallbackContent.footer
+  const visibleWorkItems = showAllWork ? work.allItems : work.items
+  const serviceHighlights = activeLang === 'sr'
+    ? ['Conversion-focused UI', 'Mobile-first experience', 'Brz i čist frontend', 'Jasni CTA tokovi']
+    : ['Conversion-focused UI', 'Mobile-first experience', 'Fast clean frontend', 'Clear CTA journeys']
+  const serviceDetails = activeLang === 'sr'
+    ? [
+        {
+          eyebrow: 'Za prvi utisak koji prodaje',
+          points: ['Jasna ponuda iznad prevoja', 'Struktura koja gradi poverenje', 'CTA tok za upite, pozive i rezervacije'],
+          outcome: 'Više ozbiljnih upita',
+        },
+        {
+          eyebrow: 'Kada treba više od prezentacije',
+          points: ['Dashboard i korisnički nalozi', 'Integracije, API tokovi i payment logika', 'UX fokus za kompleksnije proizvode'],
+          outcome: 'Spremno za skaliranje',
+        },
+        {
+          eyebrow: 'Za projekte koji ne smeju da stanu',
+          points: ['Kontinuirana poboljšanja i novi feature-i', 'Tehnička podrška bez haosa', 'Brži rollout sledećih iteracija'],
+          outcome: 'Dugoročan growth support',
+        },
+      ]
+    : [
+        {
+          eyebrow: 'For a first impression that sells',
+          points: ['Clear offer above the fold', 'Trust-building section structure', 'CTA flow for inquiries, calls, and bookings'],
+          outcome: 'More qualified leads',
+        },
+        {
+          eyebrow: 'When you need more than presentation',
+          points: ['Dashboards and authenticated user flows', 'Integrations, API logic, and payments', 'UX clarity for more complex products'],
+          outcome: 'Ready to scale',
+        },
+        {
+          eyebrow: 'For products that need continuity',
+          points: ['Ongoing improvements and new features', 'Technical support without friction', 'Faster rollout of next iterations'],
+          outcome: 'Long-term growth support',
+        },
+      ]
   const withBase = (assetPath) => `${import.meta.env.BASE_URL}${assetPath.replace(/^\//, '')}`
   const tiltEnabled = false
   const featuredTiltProps = { tiltEnabled, maxRotation: 5, hoverScale: 1.02 }
@@ -508,12 +759,12 @@ function App() {
           logoSrc={withBase('491462317_2497496547265667_8538657457538507949_n.jpg')}
           lang={lang.toUpperCase()}
           navItems={[
-            { label: t.nav.proof, href: '#proof', icon: 'proof' },
-            { label: t.nav.work, href: '#work', icon: 'work' },
-            { label: t.nav.services, href: '#services', icon: 'services' },
-            { label: t.nav.process, href: '#process', icon: 'process' },
-            { label: t.nav.about, href: '#about', icon: 'about' },
-            { label: t.nav.contact, href: '#contact', icon: 'contact' },
+            { label: nav.proof, href: '#proof', icon: 'proof' },
+            { label: nav.work, href: '#work', icon: 'work' },
+            { label: nav.services, href: '#services', icon: 'services' },
+            { label: nav.process, href: '#process', icon: 'process' },
+            { label: nav.about, href: '#about', icon: 'about' },
+            { label: nav.contact, href: '#contact', icon: 'contact' },
           ]}
           ctaLabel={lang === 'sr' ? 'Zakaži poziv' : 'Book a call'}
           onLangChange={(nextLang) => setLang(nextLang.toLowerCase())}
@@ -522,32 +773,32 @@ function App() {
         <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
           <section className="hero hero-trust-layout" id="top">
             <div className="hero-copy">
-              <h1>I turn clicks into clients.</h1>
-              <p className="hero-supporting-heading">Your website should make you money.</p>
+              <h1>{lang === 'sr' ? 'Dovedi vi?e klijenata online.' : 'Get more clients online.'}</h1>
+              <p className="hero-supporting-heading">{lang === 'sr' ? 'Napravljen da konvertuje. Dizajniran da raste.' : 'Built to convert. Designed to grow.'}</p>
               <p className="hero-subtitle">
-                From landing pages to full web platforms, I design and develop fast, professional websites that build trust and drive real business results.
+                {lang === 'sr' ? 'Od landing stranica do kompletnih web platformi, dizajniram i razvijam brze i profesionalne sajtove koji grade poverenje i donose konkretne poslovne rezultate.' : 'From landing pages to full web platforms, I design and develop fast, professional websites that build trust and drive real business results.'}
               </p>
               <div className="hero-buttons">
-                <a className="btn primary" href="#contact">Book a Free Call &rarr;</a>
-                <a className="btn ghost" href="#work">View Case Studies</a>
+                <PremiumCTAButton href="#contact">{lang === 'sr' ? 'Zaka?i besplatan poziv' : 'Book a Free Call'}</PremiumCTAButton>
+                <a className="btn ghost" href="#work">{lang === 'sr' ? 'Pogledaj case studies' : 'View Case Studies'}</a>
               </div>
-              <p className="hero-microcopy">No commitment &bull; 15 min &bull; Instant booking</p>
-              <div className="hero-micro-proof" aria-label="Client rating">
+              <p className="hero-microcopy">{lang === 'sr' ? 'Bez obaveze ? 15 min ? Brzo zakazivanje' : 'No commitment ? 15 min ? Instant booking'}</p>
+              <div className="hero-micro-proof" aria-label={lang === 'sr' ? 'Ocena klijenata' : 'Client rating'}>
                 <span className="hero-micro-proof-stars" aria-hidden="true">★★★★★</span>
-                <span className="hero-micro-proof-rating">4.9/5 client satisfaction</span>
+                <span className="hero-micro-proof-rating">{lang === 'sr' ? '4.9/5 zadovoljstvo klijenata' : '4.9/5 client satisfaction'}</span>
               </div>
             </div>
-            <aside className="hero-side-proof" aria-label="Hero proof">
+            <aside className="hero-side-proof" aria-label={lang === 'sr' ? 'Hero dokazi' : 'Hero proof'}>
               <div className="hero-side-proof-inner">
-                <span className="hero-side-proof-label">Built for client results</span>
-                <div className="hero-trust-strip" aria-label="Trust stats">
+                <span className="hero-side-proof-label">{lang === 'sr' ? 'Pravljeno za konkretan rezultat' : 'Built for client results'}</span>
+                <div className="hero-trust-strip" aria-label={lang === 'sr' ? 'Statistika poverenja' : 'Trust stats'}>
                   <span className="hero-trust-item">
                     <span className="hero-trust-icon" aria-hidden="true">
                       <HiOutlineFolderOpen />
                     </span>
                     <span className="hero-trust-copy">
                       <strong>60+</strong>
-                      <small>projects delivered</small>
+                      <small>{lang === 'sr' ? 'isporu?enih projekata' : 'projects delivered'}</small>
                     </span>
                   </span>
                   <span className="hero-trust-item">
@@ -556,7 +807,7 @@ function App() {
                     </span>
                     <span className="hero-trust-copy">
                       <strong>2018</strong>
-                      <small>working with real clients since</small>
+                      <small>{lang === 'sr' ? 'rad sa klijentima od' : 'working with real clients since'}</small>
                     </span>
                   </span>
                   <span className="hero-trust-item">
@@ -565,7 +816,7 @@ function App() {
                     </span>
                     <span className="hero-trust-copy">
                       <strong>24h</strong>
-                      <small>replies within</small>
+                      <small>{lang === 'sr' ? 'odgovor u roku' : 'replies within'}</small>
                     </span>
                   </span>
                 </div>
@@ -575,20 +826,22 @@ function App() {
 
           <section className="section proof-section" id="proof">
             <div className="section-header">
-              <span className="eyebrow">Testimonials</span>
-              <h2>{t.proof.title}</h2>
-              <p>{t.proof.subtitle}</p>
+              <span className="eyebrow">{lang === 'sr' ? 'Utisci klijenata' : 'Testimonials'}</span>
+              <h2>{proof.title}</h2>
+              <p>{proof.subtitle}</p>
             </div>
             <div className="proof-strip clean-proof-strip">
-              {t.proof.strip.map((item) => <span key={item}>{item}</span>)}
+              {proof.strip.map((item) => <span key={item}>{item}</span>)}
             </div>
             <div className="grid testimonial-grid proof-grid">
-              {t.proof.cards.map((item, index) => (
+              {proof.cards.map((item, index) => (
                 <TiltCard key={item.title} element="article" className="testimonial reveal proof-card" style={{ '--delay': `${0.06 + index * 0.06}s` }} tiltEnabled={tiltEnabled}>
-                  <span className="proof-card-label">{lang === 'sr' ? 'Rezultat' : 'Result'}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                  <strong>{item.meta}</strong>
+                  <span className="proof-card-label">{lang === 'sr' ? 'Utisci klijenata' : 'Client feedback'}</span>
+                  <blockquote>{item.body}</blockquote>
+                  <figcaption>
+                    <strong>{item.title}</strong>
+                    <span>{item.meta}</span>
+                  </figcaption>
                 </TiltCard>
               ))}
             </div>
@@ -598,13 +851,19 @@ function App() {
             <div className="section-header work-header-row">
               <div>
                 <span className="eyebrow">Case studies</span>
-                <h2>{t.work.title}</h2>
-                <p>{t.work.subtitle}</p>
+                <h2>{work.title}</h2>
+                <p>{showAllWork ? work.allSubtitle : work.subtitle}</p>
               </div>
-              <a className="text-link" href="#contact">{t.work.secondaryCta}</a>
+              <button
+                type="button"
+                className="text-link text-link-button"
+                onClick={() => setShowAllWork((value) => !value)}
+              >
+                {showAllWork ? (lang === 'sr' ? 'Zatvori radove' : 'Hide all work') : work.secondaryCta}
+              </button>
             </div>
             <div className="grid case-study-grid">
-              {t.work.items.map((item, index) => (
+              {visibleWorkItems.map((item, index) => (
                 <TiltCard key={item.title} element="article" className="work-card case-study-card reveal" style={{ '--delay': `${0.08 + index * 0.06}s` }} {...featuredTiltProps}>
                   <div className="work-media">
                     <div className="work-shot desktop">
@@ -619,18 +878,21 @@ function App() {
                     <span className="work-meta">{item.meta}</span>
                   </div>
                   <h3>{item.title}</h3>
-                  <div className="case-study-copy">
-                    <p><strong>{lang === 'sr' ? 'Problem:' : 'Challenge:'}</strong> {item.challenge}</p>
-                    <p><strong>{lang === 'sr' ? 'Rešenje:' : 'Solution:'}</strong> {item.solution}</p>
-                    <p><strong>{lang === 'sr' ? 'Ishod:' : 'Result:'}</strong> {item.result}</p>
-                  </div>
-                  <a className="btn ghost" href={item.link} target="_blank" rel="noopener noreferrer">{t.work.primaryCta}</a>
+                  {showAllWork ? (
+                    <p className="archive-work-description">{item.description}</p>
+                  ) : (
+                    <div className="case-study-copy">
+                      <p><strong>{lang === 'sr' ? 'Problem:' : 'Challenge:'}</strong> {item.challenge}</p>
+                      <p><strong>{lang === 'sr' ? 'Re?enje:' : 'Solution:'}</strong> {item.solution}</p>
+                      <p><strong>{lang === 'sr' ? 'Ishod:' : 'Result:'}</strong> {item.result}</p>
+                    </div>
+                  )}
+                  {item.link ? (
+                    <a className="btn ghost" href={item.link} target="_blank" rel="noopener noreferrer">{work.primaryCta}</a>
+                  ) : (
+                    <span className="archive-work-note">{lang === 'sr' ? 'Preview dostupan u portfoliju' : 'Preview available in portfolio'}</span>
+                  )}
                 </TiltCard>
-              ))}
-            </div>
-            <div className="work-archive">
-              {t.work.archive.map((item) => (
-                <a key={item.title} href={item.link} target="_blank" rel="noopener noreferrer" className="archive-link">{item.title}</a>
               ))}
             </div>
           </section>
@@ -638,15 +900,38 @@ function App() {
           <section className="section" id="services">
             <div className="section-header">
               <span className="eyebrow">{lang === 'sr' ? 'Ponuda' : 'Offer'}</span>
-              <h2>{t.services.title}</h2>
-              <p>{t.services.subtitle}</p>
+              <h2>{services.title}</h2>
+              <p>{services.subtitle}</p>
             </div>
-            <div className="grid service-grid">
-              {t.services.items.map((item, index) => (
-                <TiltCard key={item.title} element="article" className="card service-card reveal" style={{ '--delay': `${0.06 + index * 0.06}s` }} {...featuredTiltProps}>
-                  <span className="service-index">0{index + 1}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.desc}</p>
+            <div className="services-trend-strip" aria-label={lang === 'sr' ? 'Glavne prednosti' : 'Key advantages'}>
+              {serviceHighlights.map((item) => (
+                <span key={item} className="services-trend-pill">{item}</span>
+              ))}
+            </div>
+            <div className="grid service-grid service-premium-grid">
+              {services.items.map((item, index) => (
+                <TiltCard key={item.title} element="article" className="card service-card service-card-premium reveal" style={{ '--delay': `${0.06 + index * 0.06}s` }} {...featuredTiltProps}>
+                  <div className="service-card-head">
+                    <span className="service-index">0{index + 1}</span>
+                    <span className="service-card-eyebrow">{serviceDetails[index]?.eyebrow}</span>
+                  </div>
+                  <div className="service-icon-premium" aria-hidden="true">
+                    {index === 0 ? <HiOutlineSparkles /> : null}
+                    {index === 1 ? <HiOutlineCodeBracketSquare /> : null}
+                    {index === 2 ? <HiOutlineRocketLaunch /> : null}
+                  </div>
+                  <div className="service-card-copy">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <div className="service-points">
+                    {serviceDetails[index]?.points?.map((point) => (
+                      <span key={point} className="service-point">{point}</span>
+                    ))}
+                  </div>
+                  <div className="service-card-foot">
+                    <span className="service-outcome-chip">{serviceDetails[index]?.outcome}</span>
+                  </div>
                 </TiltCard>
               ))}
             </div>
@@ -654,9 +939,9 @@ function App() {
 
           <section className="section" id="process">
             <div className="section-header">
-              <span className="eyebrow">Roadmap</span>
-              <h2>{t.process.title}</h2>
-              <p>{t.process.subtitle}</p>
+              <span className="eyebrow">{lang === 'sr' ? 'Proces' : 'Roadmap'}</span>
+              <h2>{process.title}</h2>
+              <p>{process.subtitle}</p>
             </div>
             <div ref={processSectionRef} className="process-roadmap-shell">
               <div className="process-roadmap-line" aria-hidden="true">
@@ -664,7 +949,7 @@ function App() {
                 <span className="process-roadmap-line-progress"></span>
               </div>
               <div className="grid process-grid process-trust-grid">
-                {t.process.steps.map((step, index) => (
+                {process.steps.map((step, index) => (
                   <TiltCard key={step.title} element="article" className="process-card reveal" style={{ '--delay': `${0.08 + index * 0.05}s` }} {...featuredTiltProps}>
                     <span className="process-node" aria-hidden="true"></span>
                     <div className="process-icon" aria-hidden="true">
@@ -684,11 +969,11 @@ function App() {
 
           <section className="section cta-banner" aria-label={lang === 'sr' ? 'Poziv na akciju' : 'Call to action'}>
             <TiltCard element="div" className="cta-banner-content cta-trust" tiltEnabled={tiltEnabled}>
-              <span className="eyebrow">Next step</span>
-              <h2>{t.ctaBanner.title}</h2>
-              <p>{t.ctaBanner.body}</p>
+              <span className="eyebrow">{lang === 'sr' ? 'Slede?i korak' : 'Next step'}</span>
+              <h2>{ctaBanner.title}</h2>
+              <p>{ctaBanner.body}</p>
               <div className="cta-banner-actions">
-                <a className="btn primary" href="#contact">{t.ctaBanner.primary}</a>
+                <a className="btn primary" href="#contact">{ctaBanner.primary}</a>
               </div>
             </TiltCard>
           </section>
@@ -703,11 +988,11 @@ function App() {
                 </div>
               </div>
               <TiltCard element="div" className="stack about-copy-card" tiltEnabled={tiltEnabled}>
-                <span>{t.about.stackLabel}</span>
-                <h2>{t.about.title}</h2>
-                <p>{t.about.body}</p>
+                <span>{about.stackLabel}</span>
+                <h2>{about.title}</h2>
+                <p>{about.body}</p>
                 <ul className="about-point-list">
-                  {t.about.points.map((point) => <li key={point}>{point}</li>)}
+                  {about.points.map((point) => <li key={point}>{point}</li>)}
                 </ul>
                 <div className="stack-logos" aria-label={lang === 'sr' ? 'Logoi tehnologija' : 'Technology logos'}>
                   <img src={withBase('logos/react.png')} alt="React" loading="lazy" />
@@ -720,7 +1005,7 @@ function App() {
                   <img src={withBase('logos/postgresql.png')} alt="PostgreSQL" loading="lazy" />
                 </div>
                 <ul>
-                  {t.about.stack.map((item) => <li key={item}>{item}</li>)}
+                  {about.stack.map((item) => <li key={item}>{item}</li>)}
                 </ul>
               </TiltCard>
             </div>
@@ -728,55 +1013,55 @@ function App() {
 
           <section className="section contact" id="contact">
             <div>
-              <span className="eyebrow">Let's talk</span>
-              <h2>{t.contact.title}</h2>
-              <p>{t.contact.body}</p>
+              <span className="eyebrow">{lang === 'sr' ? 'Hajde da pri?amo' : "Let's talk"}</span>
+              <h2>{contact.title}</h2>
+              <p>{contact.body}</p>
               <div className="contact-meta">
-                <span>{t.contact.emailLabel}</span>
-                <strong>{t.contact.email}</strong>
-                <em>{t.contact.note}</em>
+                <span>{contact.emailLabel}</span>
+                <strong>{contact.email}</strong>
+                <em>{contact.note}</em>
               </div>
             </div>
             <TiltCard element="div" className="contact-card contact-form-card" tiltEnabled={tiltEnabled}>
               <form className="contact-form" onSubmit={handleFormSubmit}>
-                <label><span>{t.contact.formLabels.name}</span><input type="text" placeholder={lang === 'sr' ? 'Vaše ime' : 'Your name'} /></label>
-                <label><span>{t.contact.formLabels.email}</span><input type="email" placeholder="name@email.com" /></label>
+                <label><span>{contact.formLabels.name}</span><input type="text" placeholder={lang === 'sr' ? 'Vaše ime' : 'Your name'} /></label>
+                <label><span>{contact.formLabels.email}</span><input type="email" placeholder="name@email.com" /></label>
                 <label>
-                  <span>{t.contact.formLabels.type}</span>
+                  <span>{contact.formLabels.type}</span>
                   <select defaultValue="">
                     <option value="" disabled>{lang === 'sr' ? 'Odaberi tip projekta' : 'Select project type'}</option>
-                    {t.contact.projectTypes.map((item) => <option key={item} value={item}>{item}</option>)}
+                    {contact.projectTypes.map((item) => <option key={item} value={item}>{item}</option>)}
                   </select>
                 </label>
                 <label>
-                  <span>{t.contact.formLabels.budget}</span>
+                  <span>{contact.formLabels.budget}</span>
                   <select defaultValue="">
                     <option value="" disabled>{lang === 'sr' ? 'Odaberi okvirni budžet' : 'Select budget range'}</option>
-                    {t.contact.budgetOptions.map((item) => <option key={item} value={item}>{item}</option>)}
+                    {contact.budgetOptions.map((item) => <option key={item} value={item}>{item}</option>)}
                   </select>
                 </label>
                 <label className="contact-form-full">
-                  <span>{t.contact.formLabels.details}</span>
+                  <span>{contact.formLabels.details}</span>
                   <textarea rows="5" placeholder={lang === 'sr' ? 'Cilj projekta, rok i sve što je bitno.' : 'Goal, timeline, and anything important to know.'}></textarea>
                 </label>
-                <button className="btn primary" type="submit">{t.contact.submit}</button>
+                <button className="btn primary" type="submit">{contact.submit}</button>
               </form>
-              {formSubmitted && <p className="form-success">{t.contact.success}</p>}
+              {formSubmitted && <p className="form-success">{contact.success}</p>}
             </TiltCard>
           </section>
         </main>
 
         <footer className="footer">
           <div className="footer-content footer-trust-content">
-            <span>{t.footer.line}</span>
+            <span>{footer.line}</span>
             <span>&copy; 2026 {t.brand}</span>
             <div className="footer-link-row">
-              <a href="#proof">{t.nav.proof}</a>
-              <a href="#work">{t.nav.work}</a>
-              <a href="#services">{t.nav.services}</a>
-              <a href="#process">{t.nav.process}</a>
-              <a href="#about">{t.nav.about}</a>
-              <a href="#contact">{t.nav.contact}</a>
+              <a href="#proof">{nav.proof}</a>
+              <a href="#work">{nav.work}</a>
+              <a href="#services">{nav.services}</a>
+              <a href="#process">{nav.process}</a>
+              <a href="#about">{nav.about}</a>
+              <a href="#contact">{nav.contact}</a>
             </div>
           </div>
           <div className="footer-socials">
@@ -797,3 +1082,6 @@ function App() {
 }
 
 export default App
+
+
+
