@@ -274,7 +274,7 @@ export default function PremiumNavbar({
       <div className="w-full">
         <nav
           aria-label="Primary"
-          className="h-20 w-full border-b border-white/10 bg-slate-950/90 px-4 shadow-[0_20px_45px_rgba(2,8,23,0.28)]"
+          className="h-20 w-full border-b border-white/10 bg-slate-950 px-4 shadow-[0_20px_45px_rgba(2,8,23,0.28)]"
         >
           <div className="mx-auto flex h-full w-full max-w-[1400px] items-center gap-5 px-3">
             <a href="#top" className="min-w-0 shrink-0 text-white md:inline-flex hidden">

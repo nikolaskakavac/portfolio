@@ -210,16 +210,23 @@ const content = {
       ],
     },
     about: {
-      title: 'O meni',
+      title: 'Built on real client work.',
       body:
-        'Od 2018. radim izradu web sajtova i web aplikacija za klijente iz različitih industrija. Najviše mi odgovaraju firme koje žele ozbiljan, čist i profesionalan web nastup bez improvizacije.',
-      points: [
-        'Radio sam sa 30-40 klijenata i 60-70+ sajtova i web projekata.',
-        'Pokrivam ceo web proces: od landinga i biznis sajta do full-stack aplikacija i SaaS rešenja.',
-        'Imam development i dizajnerski background, pa finalni rezultat izgleda urednije, jasnije i profesionalnije.',
+        'Od 2018. pravim web sajtove i web aplikacije za firme kojima je potreban ozbiljan i profesionalan online nastup.',
+      bodySecondary:
+        'Iskustvo pokriva landing stranice, business sajtove, SaaS proizvode i full-stack aplikacije, sa fokusom na jasnocu, performanse i konverziju.',
+      stats: [
+        { value: '40+', label: 'klijenata' },
+        { value: '70+', label: 'projekata isporuceno' },
+        { value: 'Since 2018', label: 'rad sa realnim biznisima' },
       ],
       stackLabel: 'Expertise',
-      stack: ['React / Next.js', 'Node.js / Express', 'Python / Django', 'PostgreSQL / MongoDB', 'Webflow / Framer', 'Stripe / PayPal integrations'],
+      stackGroups: [
+        { title: 'Frontend', items: ['React', 'Next.js'] },
+        { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'Django'] },
+        { title: 'Database', items: ['PostgreSQL', 'MongoDB'] },
+        { title: 'Focus', items: ['SEO-ready frontend', 'Conversion-focused UI'] },
+      ],
     },
     resources: {
       title: 'Resursi',
@@ -462,16 +469,23 @@ const content = {
       ],
     },
     about: {
-      title: 'About',
+      title: 'Built on real client work.',
       body:
-        'Since 2018, I have been building websites and web applications for clients across different industries. I work best with companies that want a serious, clean, and professional web presence without improvisation.',
-      points: [
-        '40+ clients and 70+ website and web projects delivered.',
-        'From landing pages and business websites to full-stack apps and SaaS products.',
-        'Development and design background combined, so the final result feels cleaner, clearer, and more professional.',
+        'Since 2018, I have been building websites and web applications for businesses that need a serious, professional digital presence.',
+      bodySecondary:
+        'That includes landing pages, business websites, SaaS products, and full-stack apps, always with a focus on clarity, performance, and conversion.',
+      stats: [
+        { value: '40+', label: 'clients' },
+        { value: '70+', label: 'projects delivered' },
+        { value: 'Since 2018', label: 'building for real businesses' },
       ],
       stackLabel: 'Expertise',
-      stack: ['React / Next.js', 'Node.js / Express', 'Python / Django', 'PostgreSQL / MongoDB', 'SEO-ready frontend', 'Conversion-focused UI'],
+      stackGroups: [
+        { title: 'Frontend', items: ['React', 'Next.js'] },
+        { title: 'Backend', items: ['Node.js', 'Express', 'Python', 'Django'] },
+        { title: 'Database', items: ['PostgreSQL', 'MongoDB'] },
+        { title: 'Focus', items: ['SEO-ready frontend', 'Conversion-focused UI'] },
+      ],
     },
     resources: {
       title: 'Resources that keep building credibility',
@@ -560,11 +574,12 @@ const fallbackContent = {
     steps: [],
   },
   about: {
-    title: 'About',
+    title: 'Built on real client work.',
     body: '',
-    points: [],
+    bodySecondary: '',
+    stats: [],
     stackLabel: 'Expertise',
-    stack: [],
+    stackGroups: [],
   },
   resources: {
     title: 'Resources',
@@ -683,17 +698,25 @@ function App() {
       cursorElement.classList.add('visible')
     }
 
+    const showCursor = () => {
+      cursorElement.classList.add('visible')
+    }
+
     const hideCursor = () => {
       cursorElement.classList.remove('visible')
     }
 
     const rootElement = document.documentElement
+    window.addEventListener('mousemove', moveCursor, { passive: true })
     window.addEventListener('pointermove', moveCursor, { passive: true })
+    window.addEventListener('mouseenter', showCursor)
     rootElement.addEventListener('mouseleave', hideCursor)
     window.addEventListener('blur', hideCursor)
 
     return () => {
+      window.removeEventListener('mousemove', moveCursor)
       window.removeEventListener('pointermove', moveCursor)
+      window.removeEventListener('mouseenter', showCursor)
       rootElement.removeEventListener('mouseleave', hideCursor)
       window.removeEventListener('blur', hideCursor)
     }
@@ -773,26 +796,32 @@ function App() {
         <main className="main" lang={lang === 'sr' ? 'sr' : 'en'}>
           <section className="hero hero-trust-layout" id="top">
             <div className="hero-copy">
-              <h1>{lang === 'sr' ? 'Dovedi vi?e klijenata online.' : 'Get more clients online.'}</h1>
-              <p className="hero-supporting-heading">{lang === 'sr' ? 'Napravljen da konvertuje. Dizajniran da raste.' : 'Built to convert. Designed to grow.'}</p>
+              <h1>{lang === 'sr' ? 'Tvoj sajt treba da ti donosi klijente.' : 'Your website should bring you clients.'}</h1>
               <p className="hero-subtitle">
-                {lang === 'sr' ? 'Od landing stranica do kompletnih web platformi, dizajniram i razvijam brze i profesionalne sajtove koji grade poverenje i donose konkretne poslovne rezultate.' : 'From landing pages to full web platforms, I design and develop fast, professional websites that build trust and drive real business results.'}
+                {lang === 'sr' ? 'Dizajniram i razvijam brze, profesionalne sajtove koji pretvaraju posetioce u klijente koji placaju.' : 'I design and build fast, professional websites that turn visitors into paying clients.'}
               </p>
               <div className="hero-buttons">
-                <PremiumCTAButton href="#contact">{lang === 'sr' ? 'Zaka?i besplatan poziv' : 'Book a Free Call'}</PremiumCTAButton>
-                <a className="btn ghost" href="#work">{lang === 'sr' ? 'Pogledaj case studies' : 'View Case Studies'}</a>
+                <PremiumCTAButton href="#contact" className="hero-primary-cta" icon={false}>{lang === 'sr' ? 'Zakazi besplatan poziv' : 'Book a Free Call'}</PremiumCTAButton>
+                <a className="btn ghost hero-secondary-cta" href="#work">{lang === 'sr' ? 'Pogledaj case studies' : 'View Case Studies'}</a>
               </div>
-              <p className="hero-microcopy">{lang === 'sr' ? 'Bez obaveze ? 15 min ? Brzo zakazivanje' : 'No commitment ? 15 min ? Instant booking'}</p>
+              <p className="hero-microcopy">
+                {lang === 'sr' ? 'Bez obaveze' : 'No commitment'} &bull; 15 min &bull; {lang === 'sr' ? 'Brzo zakazivanje' : 'Instant booking'}
+              </p>
               <div className="hero-micro-proof" aria-label={lang === 'sr' ? 'Ocena klijenata' : 'Client rating'}>
-                <span className="hero-micro-proof-stars" aria-hidden="true">★★★★★</span>
+                <span className="hero-micro-proof-star" aria-hidden="true">★</span>
                 <span className="hero-micro-proof-rating">{lang === 'sr' ? '4.9/5 zadovoljstvo klijenata' : '4.9/5 client satisfaction'}</span>
               </div>
             </div>
             <aside className="hero-side-proof" aria-label={lang === 'sr' ? 'Hero dokazi' : 'Hero proof'}>
               <div className="hero-side-proof-inner">
                 <span className="hero-side-proof-label">{lang === 'sr' ? 'Pravljeno za konkretan rezultat' : 'Built for client results'}</span>
+                <p className="hero-side-proof-summary">
+                  {lang === 'sr'
+                    ? 'Poverenje mi je ukazalo 40+ firmi iz usluga, hospitality, beauty i SaaS sektora.'
+                    : 'Trusted by 40+ businesses across services, hospitality, beauty, and SaaS.'}
+                </p>
                 <div className="hero-trust-strip" aria-label={lang === 'sr' ? 'Statistika poverenja' : 'Trust stats'}>
-                  <span className="hero-trust-item">
+                  <span className="hero-trust-item hero-trust-item-featured">
                     <span className="hero-trust-icon" aria-hidden="true">
                       <HiOutlineFolderOpen />
                     </span>
@@ -806,8 +835,8 @@ function App() {
                       <HiOutlineSparkles />
                     </span>
                     <span className="hero-trust-copy">
-                      <strong>2018</strong>
-                      <small>{lang === 'sr' ? 'rad sa klijentima od' : 'working with real clients since'}</small>
+                      <strong>{lang === 'sr' ? 'Web & SaaS' : 'Web & SaaS'}</strong>
+                      <small>{lang === 'sr' ? 'sajtovi, SaaS, booking flow i redesign projekti' : 'websites, SaaS, booking flows, and redesigns'}</small>
                     </span>
                   </span>
                   <span className="hero-trust-item">
@@ -816,7 +845,7 @@ function App() {
                     </span>
                     <span className="hero-trust-copy">
                       <strong>24h</strong>
-                      <small>{lang === 'sr' ? 'odgovor u roku' : 'replies within'}</small>
+                      <small>{lang === 'sr' ? 'odgovor u roku od 24h' : 'reply within 24h'}</small>
                     </span>
                   </span>
                 </div>
@@ -944,10 +973,6 @@ function App() {
               <p>{process.subtitle}</p>
             </div>
             <div ref={processSectionRef} className="process-roadmap-shell">
-              <div className="process-roadmap-line" aria-hidden="true">
-                <span className="process-roadmap-line-track"></span>
-                <span className="process-roadmap-line-progress"></span>
-              </div>
               <div className="grid process-grid process-trust-grid">
                 {process.steps.map((step, index) => (
                   <TiltCard key={step.title} element="article" className="process-card reveal" style={{ '--delay': `${0.08 + index * 0.05}s` }} {...featuredTiltProps}>
@@ -990,23 +1015,31 @@ function App() {
               <TiltCard element="div" className="stack about-copy-card" tiltEnabled={tiltEnabled}>
                 <span>{about.stackLabel}</span>
                 <h2>{about.title}</h2>
-                <p>{about.body}</p>
-                <ul className="about-point-list">
-                  {about.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
-                <div className="stack-logos" aria-label={lang === 'sr' ? 'Logoi tehnologija' : 'Technology logos'}>
-                  <img src={withBase('logos/react.png')} alt="React" loading="lazy" />
-                  <img src={withBase('logos/next.png')} alt="Next.js" loading="lazy" />
-                  <img src={withBase('logos/node.png')} alt="Node.js" loading="lazy" />
-                  <img src={withBase('logos/express.png')} alt="Express" loading="lazy" />
-                  <img src={withBase('logos/python.png')} alt="Python" loading="lazy" />
-                  <img src={withBase('logos/django.png')} alt="Django" loading="lazy" />
-                  <img src={withBase('logos/mongodb.png')} alt="MongoDB" loading="lazy" />
-                  <img src={withBase('logos/postgresql.png')} alt="PostgreSQL" loading="lazy" />
+                <div className="about-copy-flow">
+                  <p>{about.body}</p>
+                  <p>{about.bodySecondary}</p>
                 </div>
-                <ul>
-                  {about.stack.map((item) => <li key={item}>{item}</li>)}
-                </ul>
+                <div className="about-expertise-shell">
+                  <div className="about-expertise-header">
+                    <span>{lang === 'sr' ? 'Oblasti rada' : 'Areas of expertise'}</span>
+                  </div>
+                  <div className="about-expertise-grid">
+                    {(about.stackGroups ?? []).map((group) => (
+                      <div key={group.title} className="about-expertise-group">
+                        <strong>{group.title}</strong>
+                        <p>{group.items.join(' / ')}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="about-proof-grid" aria-label={lang === 'sr' ? 'Dokazi iskustva' : 'Experience proof points'}>
+                  {(about.stats ?? []).map((item) => (
+                    <div key={`${item.value}-${item.label}`} className="about-proof-item">
+                      <strong>{item.value}</strong>
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
               </TiltCard>
             </div>
           </section>
