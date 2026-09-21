@@ -8,7 +8,7 @@
   "theme_color": "#05070f",
   "icons": [
     {
-      "src": "/brand/crna.png",
+      "src": "./brand/crna.png",
       "sizes": "1536x1024",
       "type": "image/png",
       "purpose": "any"
