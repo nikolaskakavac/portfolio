@@ -1,0 +1,17 @@
+{
+  "name": "SkaleDigitals",
+  "short_name": "SkaleDigitals",
+  "description": "Web design and development for modern business websites, landing pages, and web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05070f",
+  "theme_color": "#05070f",
+  "icons": [
+    {
+      "src": "/brand/crna.png",
+      "sizes": "1536x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
