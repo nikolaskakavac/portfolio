@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Skale Digitals Billing Overview</title>
+    <style>
+      * { box-sizing: border-box; }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: #101828;
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 12mm 14mm;
+        background: #fff;
+      }
+      .brand {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        border-bottom: 2px solid #101828;
+        padding-bottom: 18px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 32px;
+        letter-spacing: -0.04em;
+      }
+      h2 {
+        margin: 20px 0 8px;
+        font-size: 18px;
+        letter-spacing: -0.02em;
+        break-after: avoid;
+      }
+      h3 {
+        margin: 0 0 6px;
+        font-size: 14px;
+      }
+      p, li, td, th {
+        font-size: 11.5px;
+        line-height: 1.42;
+      }
+      .muted { color: #667085; }
+      .pill {
+        display: inline-block;
+        align-self: flex-start;
+        border: 1px solid #d0d5dd;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .lead {
+        max-width: 620px;
+        margin: 14px 0 0;
+        color: #475467;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+        break-inside: avoid;
+      }
+      .card {
+        border: 1px solid #e4e7ec;
+        border-radius: 13px;
+        padding: 11px;
+        background: #fcfcfd;
+        break-inside: avoid;
+      }
+      .price {
+        display: block;
+        margin-top: 8px;
+        color: #3538cd;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #e4e7ec;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      th {
+        background: #f2f4f7;
+        text-align: left;
+        font-weight: 800;
+      }
+      th, td {
+        padding: 6px 9px;
+        border-bottom: 1px solid #e4e7ec;
+        vertical-align: top;
+      }
+      tr:last-child td { border-bottom: 0; }
+      .process-block,
+      .payment-block,
+      .fine-print,
+      .footer {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .step {
+        border-left: 4px solid #6167f1;
+        padding: 8px 9px;
+        background: #f7f8ff;
+        border-radius: 8px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      ul {
+        margin: 0;
+        padding-left: 16px;
+      }
+      .fine-print {
+        margin-top: 14px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #fffbeb;
+        border: 1px solid #fedf89;
+        color: #7a4b00;
+      }
+      .footer {
+        margin-top: 16px;
+        padding-top: 10px;
+        border-top: 1px solid #e4e7ec;
+        font-size: 11px;
+        color: #667085;
+      }
+      @media print {
+        html,
+        body {
+          width: 210mm;
+          min-height: 297mm;
+          overflow: visible;
+        }
+        .page {
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="brand">
+        <div>
+          <h1>Skale Digitals</h1>
+          <p class="muted">Fair pricing & project process overview</p>
+        </div>
+        <span class="pill">Starting prices in EUR</span>
+      </section>
+
+      <p class="lead">
+        This is a transparent starting point for planning a website or web application. Final pricing depends on scope,
+        content readiness, integrations, timeline, and how much strategy/design support is needed.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Landing page</h3>
+          <p>One focused page for a service, offer, booking flow or campaign.</p>
+          <span class="price">from 700 EUR</span>
+        </div>
+        <div class="card">
+          <h3>Business website</h3>
+          <p>Homepage plus key pages, responsive UI, contact flow and launch polish.</p>
+          <span class="price">from 1,200 EUR</span>
+        </div>
+        <div class="card">
+          <h3>Full-stack platform</h3>
+          <p>Custom app, admin logic, accounts, database, API or product workflows.</p>
+          <span class="price">from 2,500 EUR</span>
+        </div>
+      </div>
+
+      <h2>Feature pricing guide</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature / service</th>
+            <th>Typical range</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Homepage redesign</td>
+            <td>400-900 EUR</td>
+            <td>Best when the current site exists but the first impression and offer structure need work.</td>
+          </tr>
+          <tr>
+            <td>Additional page</td>
+            <td>120-300 EUR</td>
+            <td>About, services, pricing, FAQ, contact, case study or similar page.</td>
+          </tr>
+          <tr>
+            <td>Case study / portfolio modal</td>
+            <td>150-350 EUR</td>
+            <td>Problem, solution, screenshots, outcomes and CTA structure.</td>
+          </tr>
+          <tr>
+            <td>Booking / lead flow</td>
+            <td>150-450 EUR</td>
+            <td>Calendly/TidyCal, email flow, WhatsApp, contact form, or routing by project type.</td>
+          </tr>
+          <tr>
+            <td>Admin dashboard</td>
+            <td>800-1,800 EUR</td>
+            <td>Depends on data model, permissions, CRUD screens and moderation needs.</td>
+          </tr>
+          <tr>
+            <td>Auth / user accounts</td>
+            <td>500-1,200 EUR</td>
+            <td>Login, registration, protected pages and account states.</td>
+          </tr>
+          <tr>
+            <td>Database + API</td>
+            <td>700-1,800 EUR</td>
+            <td>Node/Express, Django, PostgreSQL, MongoDB or similar backend setup.</td>
+          </tr>
+          <tr>
+            <td>SEO setup</td>
+            <td>150-400 EUR</td>
+            <td>Metadata, sitemap basics, structured data and semantic section structure.</td>
+          </tr>
+          <tr>
+            <td>Maintenance</td>
+            <td>150-600 EUR / month</td>
+            <td>Small updates, monitoring, fixes, new sections and ongoing improvements.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section class="process-block">
+        <h2>How the process works</h2>
+        <div class="steps">
+          <div class="step"><strong>01. Discovery</strong><br />We define goal, audience, offer, must-have features and timeline.</div>
+          <div class="step"><strong>02. Scope</strong><br />You get a clear scope, price range, milestone plan and next steps.</div>
+          <div class="step"><strong>03. Build</strong><br />Design and development happen in visible milestones with feedback points.</div>
+          <div class="step"><strong>04. Launch</strong><br />Testing, final polish, deployment support and handoff notes.</div>
+        </div>
+      </section>
+
+      <section class="payment-block">
+        <h2>Payment terms</h2>
+        <ul>
+          <li>Smaller projects: usually 50% upfront and 50% before launch/handoff.</li>
+          <li>Larger projects: usually 30% start, 40% build milestone, 30% before launch.</li>
+          <li>Urgent timelines, unclear scope or heavy content work can affect the final quote.</li>
+          <li>Hosting, domains, paid tools, third-party subscriptions and payment provider fees are billed separately.</li>
+        </ul>
+      </section>
+
+      <p class="fine-print">
+        Fair-price principle: the goal is not to charge for every tiny change, but to keep the scope honest. Small polish
+        is included; new features, new flows or major direction changes are estimated separately before work starts.
+      </p>
+
+      <p class="footer">Contact: skaledigitalss@gmail.com / Skale Digitals / This overview is not a final invoice.</p>
+    </main>
+  </body>
+</html>
