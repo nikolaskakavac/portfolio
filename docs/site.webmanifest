@@ -1,8 +1,9 @@
 {
   "name": "SkaleDigitals",
   "short_name": "SkaleDigitals",
-  "description": "Web design and development for modern business websites, landing pages, and web applications.",
+  "description": "Independent software studio building websites, web applications, integrations, and automated workflows.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#05070f",
   "theme_color": "#05070f",

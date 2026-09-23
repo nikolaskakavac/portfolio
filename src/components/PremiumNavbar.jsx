@@ -19,11 +19,12 @@ export default function PremiumNavbar({ lang = 'EN', onLangChange, labels, ctaLa
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [open])
   const changeLanguage = (next) => { onLangChange?.(next); setOpen(false) }
-  const switcher = <div className="language-switch" aria-label="Language"><button type="button" aria-pressed={lang === 'EN'} onClick={() => changeLanguage('EN')}>EN</button><span aria-hidden="true">/</span><button type="button" aria-pressed={lang === 'SR'} onClick={() => changeLanguage('SR')}>SR</button></div>
-  return <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'menu-open' : ''}`}><nav className="shell nav-inner" aria-label="Primary navigation">
-    <a className="brand" href="#top" aria-label="SkaleDigitals home" onClick={() => setOpen(false)}><span className="brand-symbol" aria-hidden="true" /><span>Skale<strong>Digitals</strong></span></a>
+  const isSerbian = lang === 'SR'
+  const switcher = <div className="language-switch" aria-label={isSerbian ? 'Izbor jezika' : 'Language selection'}><button type="button" aria-pressed={lang === 'EN'} onClick={() => changeLanguage('EN')}>EN</button><span aria-hidden="true">/</span><button type="button" aria-pressed={lang === 'SR'} onClick={() => changeLanguage('SR')}>SR</button></div>
+  return <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'menu-open' : ''}`}><nav className="shell nav-inner" aria-label={isSerbian ? 'Glavna navigacija' : 'Primary navigation'}>
+    <a className="brand" href="#top" aria-label={isSerbian ? 'SkaleDigitals početna' : 'SkaleDigitals home'} onClick={() => setOpen(false)}><span className="brand-symbol" aria-hidden="true" /><span>Skale<strong>Digitals</strong></span></a>
     <div className={`nav-panel ${open ? 'is-open' : ''}`} id="mobile-navigation"><div className="nav-links">{items.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}</div><div className="nav-mobile-actions">{switcher}<a className="nav-cta" href="#contact" onClick={() => setOpen(false)}>{ctaLabel}</a></div></div>
     <div className="nav-actions">{switcher}<a className="nav-cta" href="#contact">{ctaLabel}</a></div>
-    <button className="menu-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((value) => !value)}>{open ? <HiXMark /> : <HiBars3 />}</button>
+    <button className="menu-toggle" type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? (isSerbian ? 'Zatvori meni' : 'Close menu') : (isSerbian ? 'Otvori meni' : 'Open menu')} onClick={() => setOpen((value) => !value)}>{open ? <HiXMark /> : <HiBars3 />}</button>
   </nav></header>
 }
