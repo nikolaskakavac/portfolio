@@ -15,10 +15,11 @@
   --accent-light: #8190f2;
   --shell: min(1180px, calc(100vw - 48px));
   --radius: 18px;
+  --anchor-offset: 88px;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; background: var(--bg); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--anchor-offset); background: var(--bg); }
 body { margin: 0; min-width: 320px; background: var(--bg); color: var(--text); overflow-x: hidden; }
 body, button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -104,7 +105,7 @@ body::before {
   line-height: 1.5;
 }
 .shell { width: var(--shell); margin-inline: auto; }
-.section { padding: 150px 0; scroll-margin-top: 78px; }
+.section { padding: 150px 0; }
 .section-kicker { display: inline-block; color: var(--accent-light); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.14em; line-height: 1.2; text-transform: uppercase; }
 .section-heading { display: grid; gap: 20px; width: min(720px, 100%); margin-bottom: 78px; }
 .section-heading h2, .about-copy h2, .contact-copy h2, .engineering-inner h2 { font-size: clamp(2.7rem, 5.2vw, 5.2rem); line-height: 0.98; letter-spacing: 0; font-weight: 650; text-wrap: balance; }
@@ -305,7 +306,7 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  :root { --shell: calc(100vw - 36px); }
+  :root { --shell: calc(100vw - 36px); --anchor-offset: 84px; }
   .section { padding: 105px 0; }
   .site-header { position: fixed; }
   .nav-inner { height: 68px; display: flex; gap: 12px; }
