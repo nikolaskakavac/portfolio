@@ -6,7 +6,7 @@ import PremiumNavbar from './components/PremiumNavbar'
 import Preloader from './components/Preloader'
 import './index.css'
 
-const WEB3FORMS_ACCESS_KEY = '32d6d900-2222-452d-b767-a0d8dcc38fb8'
+const WEB3FORMS_ACCESS_KEY = '5de8edb8-24d9-4d3f-bebb-5a76d387c456'
 const SITE_URL = 'https://www.skaledigitals.com/'
 const SITE_DESCRIPTION = 'We design and build websites, web applications and business systems that help growing businesses sell, automate and scale.'
 const serviceIcons = [LuPanelsTopLeft, LuAppWindow, LuWorkflow]
