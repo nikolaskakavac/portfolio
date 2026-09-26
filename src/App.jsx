@@ -13,6 +13,39 @@ const serviceIcons = [LuPanelsTopLeft, LuAppWindow, LuWorkflow]
 
 const projects = [
   {
+    id: 'aurea-properties', title: 'AUREA Properties', concept: true,
+    eyebrow: { en: 'Real Estate · Concept', sr: 'Nekretnine · Koncept' },
+    summary: { en: 'Premium digital experience for discovering exceptional properties.', sr: 'Premium digitalno iskustvo za pronalaženje izuzetnih nekretnina.' },
+    challenge: { en: 'Premium property agencies need to present a selective offer without making discovery feel slow or complicated.', sr: 'Premium agencije moraju predstaviti pažljivo odabranu ponudu bez usporavanja i komplikovanja pretrage.' },
+    solution: { en: 'An editorial concept that balances property discovery, brand confidence, and a direct path to inquiry.', sr: 'Editorial koncept koji povezuje pregled nekretnina, povjerenje u brend i direktan put do upita.' },
+    engineering: { en: 'A responsive interface direction built around clear listing hierarchy, intentional imagery, and focused inquiry paths.', sr: 'Responsive pravac interfejsa zasnovan na jasnoj hijerarhiji oglasa, pažljivoj fotografiji i fokusiranom putu do upita.' },
+    capabilities: { en: ['Property discovery', 'Editorial direction', 'Inquiry flow', 'Responsive concept'], sr: ['Pregled nekretnina', 'Editorial pravac', 'Tok upita', 'Responsive koncept'] },
+    flow: { en: ['Visitor', 'Explore properties', 'Review details', 'Contact agency'], sr: ['Posjetilac', 'Pregled ponude', 'Detalji nekretnine', 'Kontakt sa agencijom'] },
+    desktop: 'work/aurea-properties-desktop.png', imageWidth: 1887, imageHeight: 1079, mobile: null, url: null,
+  },
+  {
+    id: 'vanta-96', title: 'VANTA//96', concept: true,
+    eyebrow: { en: 'E-commerce · Concept', sr: 'E-commerce · Koncept' },
+    summary: { en: 'Editorial streetwear commerce experience built around bold products and culture.', sr: 'Editorial streetwear prodajno iskustvo izgrađeno oko upečatljivih proizvoda i kulture.' },
+    challenge: { en: 'Streetwear commerce needs to make each drop feel distinct while keeping product discovery and purchase intent clear.', sr: 'Streetwear prodavnica mora svakom dropu dati poseban karakter, uz jasan pregled proizvoda i put do kupovine.' },
+    solution: { en: 'A product-first concept that combines campaign art direction, release context, and a focused shopping entry point.', sr: 'Koncept fokusiran na proizvod koji spaja kampanjski vizuelni pravac, kontekst kolekcije i jasan ulaz u kupovinu.' },
+    engineering: { en: 'A responsive commerce direction designed for strong imagery, release-led navigation, and direct product actions.', sr: 'Responsive commerce pravac prilagođen snažnim vizualima, navigaciji kroz kolekcije i direktnim akcijama proizvoda.' },
+    capabilities: { en: ['E-commerce', 'Drop storytelling', 'Product discovery', 'Responsive concept'], sr: ['E-commerce', 'Priča kolekcije', 'Pregled proizvoda', 'Responsive koncept'] },
+    flow: { en: ['Visitor', 'Discover drop', 'Explore product', 'Shop'], sr: ['Posjetilac', 'Otkrivanje kolekcije', 'Pregled proizvoda', 'Kupovina'] },
+    desktop: 'work/vanta-96-desktop.png', imageWidth: 1898, imageHeight: 1068, mobile: null, url: null,
+  },
+  {
+    id: 'nova', title: 'NOVA', concept: true,
+    eyebrow: { en: 'AI / SaaS · Concept', sr: 'AI / SaaS · Koncept' },
+    summary: { en: 'Modern AI SaaS product experience combining a marketing website with an intuitive application dashboard.', sr: 'Savremeno AI SaaS iskustvo koje povezuje marketinški sajt sa intuitivnim aplikacijskim dashboardom.' },
+    challenge: { en: 'An AI product needs to explain its value quickly while making the transition from marketing promise to product workflow feel natural.', sr: 'AI proizvod mora brzo objasniti vrijednost i prirodno povezati marketinško obećanje sa radom u aplikaciji.' },
+    solution: { en: 'A concept direction for one consistent system across product positioning, onboarding, and the core application experience.', sr: 'Koncept jedinstvenog sistema za pozicioniranje proizvoda, onboarding i glavno iskustvo aplikacije.' },
+    engineering: { en: 'A scalable interface direction with reusable product patterns, clear information hierarchy, and workflow-focused states.', sr: 'Skalabilan pravac interfejsa sa ponovljivim obrascima, jasnom hijerarhijom informacija i stanjima fokusiranim na tok rada.' },
+    capabilities: { en: ['Marketing website', 'Product dashboard', 'Onboarding', 'Design system'], sr: ['Marketinški sajt', 'Dashboard proizvoda', 'Onboarding', 'Dizajn sistem'] },
+    flow: { en: ['Visitor', 'Understand product', 'Create account', 'Enter workspace'], sr: ['Posjetilac', 'Razumijevanje proizvoda', 'Kreiranje naloga', 'Ulazak u radni prostor'] },
+    desktop: null, mobile: null, url: null,
+  },
+  {
     id: 'agentmasterclass', title: 'AgentMasterclass',
     eyebrow: { en: 'Real estate education', sr: 'Edukacija za agente nekretnina' },
     summary: { en: 'A program website that helps new and working real estate agents find the right in-person training path.', sr: 'Sajt programa koji početnicima i agentima nekretnina pomaže da pronađu odgovarajuću obuku uživo.' },
@@ -53,7 +86,7 @@ const copy = {
   en: {
     nav: { work: 'Work', services: 'Services', process: 'Process', about: 'About', contact: 'Contact' },
     hero: { eyebrow: 'Independent software studio', title: <>We build digital systems <br />that grow your business.</>, body: 'From high-converting websites to custom web apps, payments and automated workflows — we design and build the systems behind growing businesses.', primary: 'Start a Project', secondary: 'View Our Work', capabilities: ['Websites', 'Web Apps', 'Payments', 'Automations'] },
-    work: { eyebrow: 'Selected work', title: 'Built for real businesses.', body: 'A small selection of websites and products where clarity, implementation, and business goals had to work together.', view: 'View case study' },
+    work: { eyebrow: 'Selected work', title: 'Designed with business in mind.', body: 'Concept directions and client products across real estate, commerce, education, finance, and service businesses.', view: 'View case study' },
     problems: { eyebrow: 'Problems we solve', title: 'When your business outgrows a basic website.', items: ["You're handling applications manually.", 'Payments and customer data live in different places.', "Your website doesn't connect to the way your business actually works."], closing: "That's where we come in." },
     services: { eyebrow: 'What we build', title: 'Digital infrastructure, without the agency overhead.', items: [['Websites', 'You need a better way to attract and convert customers.'], ['Web Applications', 'Your product needs functionality beyond a traditional website.'], ['Automations & Integrations', 'Your business needs payments, data, and workflows to work together.']] },
     statement: { label: 'Our operating advantage', title: <>Lean by design.<br /><span>Built to perform.</span></>, body: 'Modern tools and hands-on engineering let us move quickly without compromising the decisions that matter — structure, usability, reliability, and business fit.', points: ['Direct collaboration', 'Modern development', 'Production-ready'] },
@@ -67,7 +100,7 @@ const copy = {
   sr: {
     nav: { work: 'Radovi', services: 'Usluge', process: 'Proces', about: 'O nama', contact: 'Kontakt' },
     hero: { eyebrow: 'Nezavisni softverski studio', title: <>Gradimo digitalne sisteme <br />koji razvijaju vaš biznis.</>, body: 'Gradimo sajtove koji jasno vode do upita, web aplikacije, tokove plaćanja i automatizovane procese za firme koje rastu.', primary: 'Započni projekat', secondary: 'Pogledaj radove', capabilities: ['Sajtovi', 'Web aplikacije', 'Plaćanja', 'Automatizacije'] },
-    work: { eyebrow: 'Izdvojeni radovi', title: 'Napravljeno za stvarne biznise.', body: 'Mali izbor sajtova i proizvoda gde su jasnoća, implementacija i poslovni cilj morali da rade zajedno.', view: 'Otvori case study' },
+    work: { eyebrow: 'Izdvojeni radovi', title: 'Dizajnirano sa poslovnim ciljem.', body: 'Koncepti i proizvodi za klijente iz oblasti nekretnina, trgovine, edukacije, finansija i uslužnih djelatnosti.', view: 'Otvori case study' },
     problems: { eyebrow: 'Problemi koje rješavamo', title: 'Kada vaš biznis preraste osnovni sajt.', items: ['Prijave i dalje obrađujete ručno.', 'Plaćanja i podaci o klijentima nalaze se na različitim mjestima.', 'Vaš sajt nije povezan sa načinom na koji biznis stvarno funkcioniše.'], closing: 'Tu mi preuzimamo.' },
     services: { eyebrow: 'Šta gradimo', title: 'Digitalna infrastruktura bez agencijske birokratije.', items: [['Sajtovi', 'Treba vam bolji način da privučete i pretvorite posjetioce u klijente.'], ['Web aplikacije', 'Vašem proizvodu treba više funkcionalnosti od tradicionalnog sajta.'], ['Automatizacije i integracije', 'Plaćanja, podaci i poslovni tokovi treba da rade zajedno.']] },
     statement: { label: 'Naša operativna prednost', title: <>Efikasan razvoj.<br /><span>Pouzdana izvedba.</span></>, body: 'Savremeni alati i praktičan inženjering ubrzavaju rad bez kompromisa u odlukama koje su važne — strukturi, upotrebljivosti, pouzdanosti i poslovnoj svrsi.', points: ['Direktna saradnja', 'Savremen razvoj', 'Spremno za produkciju'] },
@@ -161,10 +194,10 @@ function App() {
 
       <section className="section selected-work"><div className="shell">
         <header className="section-heading" id="work"><span className="section-kicker">{t.work.eyebrow}</span><h2>{t.work.title}</h2><p>{t.work.body}</p></header>
-        <div className="project-list">{projects.map((project, index) => <article className={`project-feature project-${project.id} ${index % 2 ? 'project-reverse' : ''}`} key={project.id}>
+        <div className="project-list">{projects.map((project, index) => <article className={`project-feature project-${project.id} ${project.concept ? 'project-concept' : ''} ${index === 0 ? 'project-featured' : ''} ${index % 2 ? 'project-reverse' : ''}`} key={project.id}>
           <button className="project-visual" type="button" onClick={() => setActiveProject(project)} aria-label={`${t.work.view}: ${project.title}`}>
-            <span className="browser-frame"><span className="browser-bar"><i></i><i></i><i></i></span><img src={withBase(project.desktop)} alt={`${project.title} ${lang === 'sr' ? 'prikaz za desktop' : 'desktop preview'}`} loading="lazy" /></span>
-            <span className="phone-frame"><img src={withBase(project.mobile)} alt={`${project.title} ${lang === 'sr' ? 'prikaz za telefon' : 'mobile preview'}`} loading="lazy" /></span>
+            {project.desktop ? <span className="browser-frame"><span className="browser-bar"><i></i><i></i><i></i></span><img src={withBase(project.desktop)} alt={`${project.title} ${lang === 'sr' ? 'prikaz za desktop' : 'desktop preview'}`} width={project.imageWidth} height={project.imageHeight} loading="lazy" decoding="async" /></span> : <span className="concept-preview concept-preview-nova" aria-hidden="true"><span className="concept-preview-meta">AI PRODUCT SYSTEM / 03</span><strong>NOVA</strong><span className="concept-preview-line" /><span className="concept-preview-detail">MARKETING · PRODUCT · WORKFLOW</span></span>}
+            {project.mobile && <span className="phone-frame"><img src={withBase(project.mobile)} alt={`${project.title} ${lang === 'sr' ? 'prikaz za telefon' : 'mobile preview'}`} loading="lazy" decoding="async" /></span>}
           </button>
           <div className="project-copy"><span className="project-index">0{index + 1}</span><span className="section-kicker">{project.eyebrow[lang]}</span><h3>{project.id === 'agentmasterclass' ? <>Agent<wbr />Masterclass</> : project.title}</h3><p>{project.summary[lang]}</p><div className="project-capabilities" aria-label={lang === 'sr' ? 'Mogućnosti sistema' : 'System capabilities'}>{project.capabilities[lang].map((item) => <span key={item}>{item}</span>)}</div><button className="project-link" type="button" onClick={() => setActiveProject(project)}>{t.work.view}<HiArrowRight /></button></div>
         </article>)}</div>
@@ -195,9 +228,9 @@ function App() {
     <footer className="site-footer"><div className="shell footer-inner"><div><a className="footer-brand" href="#top" aria-label={lang === 'sr' ? 'SkaleDigitals početna' : 'SkaleDigitals home'}><span className="footer-logo" aria-hidden="true" /></a><p>{t.footer}</p></div><nav aria-label={lang === 'sr' ? 'Navigacija u podnožju' : 'Footer navigation'}><a href="#work">{t.nav.work}</a><a href="#services">{t.nav.services}</a><a href="#process">{t.nav.process}</a><a href="#about">{t.nav.about}</a><a href="#contact">{t.nav.contact}</a></nav><div className="footer-socials"><a href="https://instagram.com/skaledigitals" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.linkedin.com/in/nikolaskakavac/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/nikolaskakavac" target="_blank" rel="noreferrer">GitHub</a></div><span className="copyright">© 2026 SkaleDigitals</span></div></footer>
 
     {activeProject && <div className="case-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setActiveProject(null)}>
-      <section className={`case-dialog case-dialog-${activeProject.id}`} ref={caseDialogRef} role="dialog" aria-modal="true" aria-labelledby="case-title">
+      <section className={`case-dialog case-dialog-${activeProject.id} ${activeProject.concept ? 'case-dialog-concept' : ''}`} ref={caseDialogRef} role="dialog" aria-modal="true" aria-labelledby="case-title">
         <button className="case-close" ref={caseCloseRef} type="button" autoFocus onClick={() => setActiveProject(null)} aria-label={lang === 'sr' ? 'Zatvori' : 'Close'}><HiXMark /></button>
-        <div className="case-image"><img src={withBase(activeProject.desktop)} alt={`${activeProject.title} ${lang === 'sr' ? 'desktop stranica' : 'desktop page'}`} /></div>
+        <div className="case-image">{activeProject.desktop ? <img src={withBase(activeProject.desktop)} alt={`${activeProject.title} ${lang === 'sr' ? 'desktop stranica' : 'desktop page'}`} width={activeProject.imageWidth} height={activeProject.imageHeight} /> : <div className="concept-preview concept-preview-nova" aria-hidden="true"><span className="concept-preview-meta">AI PRODUCT SYSTEM / 03</span><strong>NOVA</strong><span className="concept-preview-line" /><span className="concept-preview-detail">MARKETING · PRODUCT · WORKFLOW</span></div>}</div>
         <div className="case-content">
           <span className="section-kicker">{activeProject.eyebrow[lang]}</span><h2 id="case-title">{activeProject.id === 'agentmasterclass' ? <>Agent<wbr />Masterclass</> : activeProject.title}</h2>
           <div className={`case-story ${activeProject.engineering ? '' : 'case-story-compact'}`}>
