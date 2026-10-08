@@ -43,7 +43,7 @@ const projects = [
     engineering: { en: 'A scalable interface direction with reusable product patterns, clear information hierarchy, and workflow-focused states.', sr: 'Skalabilan pravac interfejsa sa ponovljivim obrascima, jasnom hijerarhijom informacija i stanjima fokusiranim na tok rada.' },
     capabilities: { en: ['Marketing website', 'Product dashboard', 'Onboarding', 'Design system'], sr: ['Marketinški sajt', 'Dashboard proizvoda', 'Onboarding', 'Dizajn sistem'] },
     flow: { en: ['Visitor', 'Understand product', 'Create account', 'Enter workspace'], sr: ['Posjetilac', 'Razumijevanje proizvoda', 'Kreiranje naloga', 'Ulazak u radni prostor'] },
-    desktop: null, mobile: null, url: null,
+    desktop: 'work/nova-desktop.png', imageWidth: 1850, imageHeight: 811, mobile: 'work/nova-mobile.png', url: null,
   },
   {
     id: 'agentmasterclass', title: 'AgentMasterclass',
@@ -58,35 +58,13 @@ const projects = [
     detailCaption: { en: 'Program selection on mobile', sr: 'Izbor programa na telefonu' },
     url: 'https://agentmasterclass.rs',
   },
-  {
-    id: 'arbexfund', title: 'ArbexFund',
-    eyebrow: { en: 'Finance platform', sr: 'Finansijska platforma' },
-    summary: { en: 'An account sales system that makes a complex financial offer easier to understand, explore, and act on.', sr: 'Sistem za prodaju naloga koji kompleksnu finansijsku ponudu čini lakšom za razumijevanje, pregled i sljedeći korak.' },
-    challenge: { en: 'Account sales can feel risky when the offer, process, and trust signals are not structured clearly.', sr: 'Prodaja naloga može delovati rizično kada ponuda, proces i signali poverenja nisu jasno strukturirani.' },
-    solution: { en: 'A focused platform combining account discovery, buyer inquiries, and the internal workflow needed to manage the offer.', sr: 'Fokusirana platforma koja spaja pregled naloga, upite kupaca i interni tok potreban za upravljanje ponudom.' },
-    engineering: { en: 'Responsive full-stack application with separate client and server logic, structured data, and an administration workflow.', sr: 'Responsive full-stack aplikacija sa odvojenom klijentskom i serverskom logikom, strukturiranim podacima i administrativnim tokom.' },
-    capabilities: { en: ['Web application', 'Account catalog', 'Buyer inquiries', 'Admin workflow'], sr: ['Web aplikacija', 'Katalog naloga', 'Upiti kupaca', 'Administracija'] },
-    flow: { en: ['Visitor', 'Account offer', 'Selection', 'Inquiry', 'Admin follow-up'], sr: ['Posjetilac', 'Ponuda naloga', 'Odabir', 'Upit', 'Admin obrada'] },
-    stack: ['React', 'Node.js', 'Express', 'MongoDB'], desktop: 'work/arbexpc.png', mobile: 'work/arbexmob.png', url: 'https://arbexfund.com',
-  },
-  {
-    id: 'inkvibe', title: 'InkVibe',
-    eyebrow: { en: 'Tattoo studio website', sr: 'Sajt za tattoo studio' },
-    summary: { en: 'A studio website that puts the work first and gives prospective clients a direct path to a booking inquiry.', sr: 'Sajt studija koji radove stavlja u prvi plan i potencijalnim klijentima daje direktan put do upita za termin.' },
-    challenge: { en: 'The site needed to feel distinctive without making the portfolio or booking journey difficult to understand.', sr: 'Sajt je morao da bude prepoznatljiv bez komplikovanja portfolija i puta do rezervacije.' },
-    solution: { en: 'A stronger visual direction, clear work presentation, and a direct booking path across desktop and mobile.', sr: 'Jači vizuelni pravac, jasna prezentacija radova i direktan booking tok na desktopu i telefonu.' },
-    engineering: { en: 'A fast responsive interface built around image presentation, clear navigation, and a consistent inquiry path.', sr: 'Brz responsive interfejs izgrađen oko prikaza radova, jasne navigacije i dosljednog puta do upita.' },
-    capabilities: { en: ['Business website', 'Work portfolio', 'Booking inquiry', 'Mobile experience'], sr: ['Poslovni sajt', 'Portfolio radova', 'Upit za termin', 'Mobilno iskustvo'] },
-    flow: { en: ['Visitor', 'Portfolio', 'Studio fit', 'Booking inquiry'], sr: ['Posjetilac', 'Portfolio', 'Izbor studija', 'Upit za termin'] },
-    stack: ['React', 'Vite', 'Responsive UI', 'Booking flow'], desktop: 'work/inkvibe-desktop.png', mobile: 'work/inkvibe-mobile.png', url: 'https://nikolaskakavac.github.io/InkVibe/',
-  },
 ]
 
 const copy = {
   en: {
     nav: { work: 'Work', services: 'Services', process: 'Process', about: 'About', contact: 'Contact' },
     hero: { eyebrow: 'Independent software studio', title: <>We build digital systems <br />that grow your business.</>, body: 'From high-converting websites to custom web apps, payments and automated workflows — we design and build the systems behind growing businesses.', primary: 'Start a Project', secondary: 'View Our Work', capabilities: ['Websites', 'Web Apps', 'Payments', 'Automations'] },
-    work: { eyebrow: 'Selected work', title: 'Designed with business in mind.', body: 'Concept directions and client products across real estate, commerce, education, finance, and service businesses.', view: 'View case study' },
+    work: { eyebrow: 'Selected work', title: 'Designed with business in mind.', body: 'Concept directions and client products across real estate, commerce, SaaS, and education.', view: 'View case study' },
     problems: { eyebrow: 'Problems we solve', title: 'When your business outgrows a basic website.', items: ["You're handling applications manually.", 'Payments and customer data live in different places.', "Your website doesn't connect to the way your business actually works."], closing: "That's where we come in." },
     services: { eyebrow: 'What we build', title: 'Digital infrastructure, without the agency overhead.', items: [['Websites', 'You need a better way to attract and convert customers.'], ['Web Applications', 'Your product needs functionality beyond a traditional website.'], ['Automations & Integrations', 'Your business needs payments, data, and workflows to work together.']] },
     statement: { label: 'Our operating advantage', title: <>Lean by design.<br /><span>Built to perform.</span></>, body: 'Modern tools and hands-on engineering let us move quickly without compromising the decisions that matter — structure, usability, reliability, and business fit.', points: ['Direct collaboration', 'Modern development', 'Production-ready'] },
@@ -100,7 +78,7 @@ const copy = {
   sr: {
     nav: { work: 'Radovi', services: 'Usluge', process: 'Proces', about: 'O nama', contact: 'Kontakt' },
     hero: { eyebrow: 'Nezavisni softverski studio', title: <>Gradimo digitalne sisteme <br />koji razvijaju vaš biznis.</>, body: 'Gradimo sajtove koji jasno vode do upita, web aplikacije, tokove plaćanja i automatizovane procese za firme koje rastu.', primary: 'Započni projekat', secondary: 'Pogledaj radove', capabilities: ['Sajtovi', 'Web aplikacije', 'Plaćanja', 'Automatizacije'] },
-    work: { eyebrow: 'Izdvojeni radovi', title: 'Dizajnirano sa poslovnim ciljem.', body: 'Koncepti i proizvodi za klijente iz oblasti nekretnina, trgovine, edukacije, finansija i uslužnih djelatnosti.', view: 'Otvori case study' },
+    work: { eyebrow: 'Izdvojeni radovi', title: 'Dizajnirano sa poslovnim ciljem.', body: 'Koncepti i proizvodi iz oblasti nekretnina, trgovine, SaaS-a i edukacije.', view: 'Otvori case study' },
     problems: { eyebrow: 'Problemi koje rješavamo', title: 'Kada vaš biznis preraste osnovni sajt.', items: ['Prijave i dalje obrađujete ručno.', 'Plaćanja i podaci o klijentima nalaze se na različitim mjestima.', 'Vaš sajt nije povezan sa načinom na koji biznis stvarno funkcioniše.'], closing: 'Tu mi preuzimamo.' },
     services: { eyebrow: 'Šta gradimo', title: 'Digitalna infrastruktura bez agencijske birokratije.', items: [['Sajtovi', 'Treba vam bolji način da privučete i pretvorite posjetioce u klijente.'], ['Web aplikacije', 'Vašem proizvodu treba više funkcionalnosti od tradicionalnog sajta.'], ['Automatizacije i integracije', 'Plaćanja, podaci i poslovni tokovi treba da rade zajedno.']] },
     statement: { label: 'Naša operativna prednost', title: <>Efikasan razvoj.<br /><span>Pouzdana izvedba.</span></>, body: 'Savremeni alati i praktičan inženjering ubrzavaju rad bez kompromisa u odlukama koje su važne — strukturi, upotrebljivosti, pouzdanosti i poslovnoj svrsi.', points: ['Direktna saradnja', 'Savremen razvoj', 'Spremno za produkciju'] },
